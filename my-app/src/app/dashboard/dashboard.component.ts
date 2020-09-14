@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { RestapiService, Task } from '../restapi.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DialogOverviewExampleDialog } from './dialog-overview-example-dialog';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,18 +10,49 @@ import { RestapiService, Task } from '../restapi.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private restapi : RestapiService) { }
-
+  constructor(private restapi : RestapiService, public dialog: MatDialog) { }
 
   users: Task[] = [];
   player: boolean = false;//blue
-
+  animal: string;
+  name: string;
 
   ngOnInit(): void { 
 
     this.users = this.restapi.tasks; 
 
   }
+
+  checkAdjacent(){
+
+
+    if(this.users[64].color=="red"&&this.users[65].color=="red"&&this.users[66].color=="red"&&this.users[67].color=="red"){
+
+      this.openDialog(); 
+    }
+    
+  }
+
+  openDialog(): void {
+
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  
+
+  }
+
+  // ngAfterViewChecked(){
+
+  //   this.checkAdjacent();
+
+  // }
 
   onClick(id){
 
@@ -46,7 +79,7 @@ export class DashboardComponent implements OnInit {
     var downCount = 0;
     for(var x=0,y=parseInt(id);x<=5;x++,y+=12){
       if(this.users[ (y) -1].color=="gray"){
-        downCount = parseInt(y/12);
+        downCount = parseInt(y/12); 
         console.log(downCount)
       }
     }
@@ -57,8 +90,10 @@ export class DashboardComponent implements OnInit {
       setTimeout(() => {
         this.users[ ( num ) -1].color="gray"; num +=12;
         this.users[ ( num ) -1].color=color;
+        this.checkAdjacent();
       }, y);
     }
+
     //esta ocupado {red o blue} // no des el ultimo paso
     //si hago click en la segunda linea de arriba abajo son menos pasos.
 

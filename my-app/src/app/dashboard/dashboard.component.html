@@ -4,6 +4,9 @@
 <br/>
 <br/>
         <div class="row">
+                <button mat-raised-button (click)="openDialog()">Pick one</button>
+        </div>
+        <div class="row">
                 
                 <div (click)="onClick(user.id)" class="col-md-1" *ngFor="let user of users; let i = index">
                         
