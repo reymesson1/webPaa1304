@@ -26,7 +26,13 @@ export class DashboardComponent implements OnInit {
 
 
  
-      if(this.users[28].color=="red"&&this.users[29].color=="red"&&this.users[30].color=="red"&&this.users[31].color=="red"){
+      if(this.users[4].color=="red"&&this.users[5].color=="red"&&this.users[6].color=="red"&&this.users[7].color=="red"){
+        
+        this.openDialog(); 
+      } else if(this.users[16].color=="red"&&this.users[17].color=="red"&&this.users[18].color=="red"&&this.users[19].color=="red"){
+        
+        this.openDialog(); 
+      } else if(this.users[28].color=="red"&&this.users[29].color=="red"&&this.users[30].color=="red"&&this.users[31].color=="red"){
         
         this.openDialog(); 
       } else if(this.users[40].color=="red"&&this.users[41].color=="red"&&this.users[42].color=="red"&&this.users[43].color=="red"){
