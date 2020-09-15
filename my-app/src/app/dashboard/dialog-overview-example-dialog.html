@@ -3,9 +3,22 @@
 </div>
 <div class="row">
     <div class="col-md-6">
-            <button mat-button color="default">View Score</button>
+            <button mat-button color="default" (click)="viewScore()" >View Score</button>
         </div>
     <div class="col-md-6">
             <button mat-button color="primary" (click)="reset()" >Play again</button>
-        </div>
+    </div>
+</div>
+<div class="row" *ngIf="isScore" >
+
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
+
 </div>

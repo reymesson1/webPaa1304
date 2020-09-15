@@ -8,12 +8,18 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 })
 export class DialogOverviewExampleDialog {
 
+    isScore : boolean = false;
 
     constructor(private restapi : RestapiService,public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,@Inject(MAT_DIALOG_DATA) public data: DialogData) 
     {}
 
     onNoClick(): void {
         this.dialogRef.close();
+    }
+
+    viewScore(){
+
+        this.isScore = !this.isScore;
     }
 
     reset(){
@@ -23,7 +29,10 @@ export class DialogOverviewExampleDialog {
             this.restapi.tasks[x].color="gray";
         }
 
+        this.restapi.player = false;
+        
         this.dialogRef.close();
+
 
     }
 

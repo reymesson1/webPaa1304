@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class RestapiService {
 
+  player: boolean = false;//blue
 
   tasks: Task[] = [
 

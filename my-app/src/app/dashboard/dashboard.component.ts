@@ -13,7 +13,6 @@ export class DashboardComponent implements OnInit {
   constructor(private restapi : RestapiService, public dialog: MatDialog) { }
 
   users: Task[] = [];
-  player: boolean = false;//blue
   animal: string;
   name: string;
 
@@ -58,21 +57,21 @@ export class DashboardComponent implements OnInit {
 
     this.checkLocation(id);
 
-    if(this.player){
+    if(this.restapi.player){
 
       this.users[(id)-1].color="red";
-      this.player = !this.player;
+      this.restapi.player = !this.restapi.player;
     }else{
       
       this.users[(id)-1].color="blue";
-      this.player = !this.player;
+      this.restapi.player = !this.restapi.player;
     }
 
   }
 
   checkLocation(id){
     var color = "blue";
-    if(this.player){
+    if(this.restapi.player){
       color = "red"
     }
     var num = parseInt(id);
