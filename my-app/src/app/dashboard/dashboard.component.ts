@@ -25,10 +25,21 @@ export class DashboardComponent implements OnInit {
   checkAdjacent(){
 
 
-    if(this.users[64].color=="red"&&this.users[65].color=="red"&&this.users[66].color=="red"&&this.users[67].color=="red"){
+ 
+      if(this.users[28].color=="red"&&this.users[29].color=="red"&&this.users[30].color=="red"&&this.users[31].color=="red"){
+        
+        this.openDialog(); 
+      } else if(this.users[40].color=="red"&&this.users[41].color=="red"&&this.users[42].color=="red"&&this.users[43].color=="red"){
+        
+        this.openDialog(); 
+      } else if(this.users[52].color=="red"&&this.users[53].color=="red"&&this.users[54].color=="red"&&this.users[55].color=="red"){
+        
+        this.openDialog(); 
+      } else if(this.users[64].color=="red"&&this.users[65].color=="red"&&this.users[66].color=="red"&&this.users[67].color=="red"){
+        
+        this.openDialog(); 
+      }
 
-      this.openDialog(); 
-    }
     
   }
 
@@ -79,7 +90,7 @@ export class DashboardComponent implements OnInit {
     for(var x=0,y=parseInt(id);x<=5;x++,y+=12){
       if(this.users[ (y) -1].color=="gray"){
         downCount = parseInt(y/12); 
-        console.log(downCount)
+        // console.log(downCount)
       }
     }
     if(id==12){
