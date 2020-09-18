@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
   usersMulti: Task[][] = [12][6];
   animal: string;
   name: string;
+  temp : number = 0;
 
   ngOnInit(): void { 
 
@@ -26,75 +27,28 @@ export class DashboardComponent implements OnInit {
 
   checkAdjacent(){
 
+    //horizontal
     for(var x=0;x<72;x++){
 
-
-        console.log(x + " " + parseInt(x+1) + " " +  parseInt(x+2) + " " + parseInt(x+3));
         if(this.users[parseInt(x)].color =="red" && this.users[parseInt(x+1)].color == "red" &&  this.users[parseInt(x+2)].color == "red" && this.users[parseInt(x+3)].color == "red"){
 
           this.openDialog();
         }
 
-
     }
 
-    
-      // if(this.users[4].color=="red"&&this.users[5].color=="red"&&this.users[6].color=="red"&&this.users[7].color=="red"){
-        
-      //   this.openDialog(); 
-      // } else if(this.users[16].color=="red"&&this.users[17].color=="red"&&this.users[18].color=="red"&&this.users[19].color=="red"){
-        
-      //   this.openDialog(); 
-      // } else if(this.users[28].color=="red"&&this.users[29].color=="red"&&this.users[30].color=="red"&&this.users[31].color=="red"){
-        
-      //   this.openDialog(); 
-      // } else if(this.users[40].color=="red"&&this.users[41].color=="red"&&this.users[42].color=="red"&&this.users[43].color=="red"){
-        
-      //   this.openDialog(); 
-      // } else if(this.users[52].color=="red"&&this.users[53].color=="red"&&this.users[54].color=="red"&&this.users[55].color=="red"){
-        
-      //   this.openDialog(); 
-      // } else if(this.users[64].color=="red"&&this.users[65].color=="red"&&this.users[66].color=="red"&&this.users[67].color=="red"){
-        
-      //   this.openDialog(); 
-      // } else if(this.users[0].color=="red"&&this.users[1].color=="red"&&this.users[2].color=="red"&&this.users[3].color=="red"){
+    //vertical
+    for(var x=parseInt(this.temp)-1,z=0;x<72;x+=12,z++){
 
-      //   this.openDialog(); 
-      // } else if(this.users[1].color=="red"&&this.users[2].color=="red"&&this.users[3].color=="red"&&this.users[4].color=="red"){
-        
-      //   this.openDialog(); 
-      // } else if(this.users[2].color=="red"&&this.users[3].color=="red"&&this.users[4].color=="red"&&this.users[5].color=="red"){
-        
-      //   this.openDialog(); 
-      // } else if(this.users[3].color=="red"&&this.users[4].color=="red"&&this.users[5].color=="red"&&this.users[6].color=="red"){
-        
-      //   this.openDialog(); 
-      // } else if(this.users[5].color=="red"&&this.users[6].color=="red"&&this.users[7].color=="red"&&this.users[8].color=="red"){
-        
-      //   this.openDialog(); 
-      // } else if(this.users[6].color=="red"&&this.users[7].color=="red"&&this.users[8].color=="red"&&this.users[9].color=="red"){
-        
-      //   this.openDialog(); 
-      // } else if(this.users[7].color=="red"&&this.users[8].color=="red"&&this.users[9].color=="red"&&this.users[10].color=="red"){
-        
-      //   this.openDialog(); 
-      // } else if(this.users[8].color=="red"&&this.users[9].color=="red"&&this.users[10].color=="red"&&this.users[11].color=="red"){
-        
-      //   this.openDialog(); 
-      // }
-      
-      // //segunda linea
+      if(z<3){
+            
+        if(this.users[parseInt(x)].color=="red" && this.users[parseInt(x+12)].color=="red" && this.users[parseInt(x+24)].color=="red" && this.users[parseInt(x+36)].color=="red" ){
 
+          this.openDialog();          
+        }
+      }
 
-      // else if(this.users[12].color=="red"&&this.users[13].color=="red"&&this.users[14].color=="red"&&this.users[15].color=="red"){
-        
-      //   this.openDialog(); 
-      // } else if(this.users[13].color=="red"&&this.users[14].color=="red"&&this.users[15].color=="red"&&this.users[16].color=="red"){
-        
-      //    this.openDialog();  
-      // }
-
-
+    }
     
   }
 
@@ -122,6 +76,7 @@ export class DashboardComponent implements OnInit {
   onClick(id){
 
     this.checkLocation(id);
+    this.temp = id;
 
     if(this.restapi.player){
 
