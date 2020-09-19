@@ -51,18 +51,19 @@ export class DashboardComponent implements OnInit {
     }
 
     //diagonal horizontal
-    // for(var x=parseInt(this.temp),z=0;x<72;x+=13,z++){
+    for(var x=parseInt(this.temp)-1,z=0;x<72;x+=13,z++){
 
-    //   if(z<3){
-        
-    //     console.log(parseInt(x) + " " + parseInt(x+13) + " " + parseInt(x+26) +  " " + parseInt(x+39) )
-    //     if(this.users[parseInt(x)].color=="red" && this.users[parseInt(x+13)].color=="red" && this.users[parseInt(x+26)].color=="red" && this.users[parseInt(x+39)].color=="red" ){
+      if(z<3){
 
-    //       this.openDialog();          
-    //     }
-    //   }
+        console.log( parseInt(x) + " " + parseInt(x+13) + " " + parseInt(x+26) + " " + parseInt(x+39) );        
+        if(this.users[parseInt(x)].color=="red" && this.users[parseInt(x+13)].color=="red" && this.users[parseInt(x+26)].color=="red" && this.users[parseInt(x+39)].color=="red" ){
 
-    // }
+          this.openDialog();          
+        }
+
+      }
+    }
+
 
     //diagonal vertical
     for(var x=parseInt(this.temp)-1,z=0;x<72;x+=11,z++){
@@ -71,7 +72,7 @@ export class DashboardComponent implements OnInit {
 
         if(z==0){
           
-          console.log( parseInt(x) + " " + parseInt(x+11) + " " + parseInt(x+22) + " " + parseInt(x+33) );    
+          // console.log( parseInt(x) + " " + parseInt(x+11) + " " + parseInt(x+22) + " " + parseInt(x+33) );    
           if( this.users[parseInt(x)].color=="red" && this.users[parseInt(x+11)].color=="red" &&  this.users[parseInt(x+22)].color=="red" && this.users[parseInt(x+33)].color=="red" ){
 
             this.openDialog()
@@ -82,7 +83,7 @@ export class DashboardComponent implements OnInit {
 
         if(z<2){
 
-          console.log( parseInt(x) + " " + parseInt(x+11) + " " + parseInt(x+22) + " " + parseInt(x+33) );    
+          // console.log( parseInt(x) + " " + parseInt(x+11) + " " + parseInt(x+22) + " " + parseInt(x+33) );    
           if( this.users[parseInt(x)].color=="red" && this.users[parseInt(x+11)].color=="red" &&  this.users[parseInt(x+22)].color=="red" && this.users[parseInt(x+33)].color=="red" ){
 
             this.openDialog()
@@ -93,7 +94,7 @@ export class DashboardComponent implements OnInit {
 
         if(z<3){
 
-          console.log( parseInt(x) + " " + parseInt(x+11) + " " + parseInt(x+22) + " " + parseInt(x+33) );    
+          // console.log( parseInt(x) + " " + parseInt(x+11) + " " + parseInt(x+22) + " " + parseInt(x+33) );    
           if( this.users[parseInt(x)].color=="red" && this.users[parseInt(x+11)].color=="red" &&  this.users[parseInt(x+22)].color=="red" && this.users[parseInt(x+33)].color=="red" ){
 
             this.openDialog()
@@ -104,16 +105,18 @@ export class DashboardComponent implements OnInit {
 
     }
 
-      if(this.users[parseInt(60)].color=="red" && this.users[parseInt(49)].color=="red" && this.users[parseInt(38)].color=="red" && this.users[parseInt(27)].color=="red" ){
 
-        this.openDialog();          
-      }else if(this.users[parseInt(48)].color=="red" && this.users[parseInt(37)].color=="red" && this.users[parseInt(26)].color=="red" && this.users[parseInt(15)].color=="red" ){
+
+      // if(this.users[parseInt(60)].color=="red" && this.users[parseInt(49)].color=="red" && this.users[parseInt(38)].color=="red" && this.users[parseInt(27)].color=="red" ){
+
+      //   this.openDialog();          
+      // }else if(this.users[parseInt(48)].color=="red" && this.users[parseInt(37)].color=="red" && this.users[parseInt(26)].color=="red" && this.users[parseInt(15)].color=="red" ){
       
-        this.openDialog();         
-      }else if(this.users[parseInt(36)].color=="red" && this.users[parseInt(25)].color=="red" && this.users[parseInt(14)].color=="red" && this.users[parseInt(3)].color=="red" ){
+      //   this.openDialog();         
+      // }else if(this.users[parseInt(36)].color=="red" && this.users[parseInt(25)].color=="red" && this.users[parseInt(14)].color=="red" && this.users[parseInt(3)].color=="red" ){
       
-        this.openDialog();         
-      }
+      //   this.openDialog();         
+      // }
 
 
 
