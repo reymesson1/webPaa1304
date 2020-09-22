@@ -178,22 +178,29 @@ export class DashboardComponent implements OnInit {
       color = "red"
     }
 
-    for(let x=0,y=500;x<5;x++,y+=500){
+    //chequea en esa column cuando grayes hay.
+    let downCount = 0;
+    for(let x=0;x<6;x++){ 
+      console.log(this.columns[columnId].rows[x].color);
+      if(this.columns[columnId].rows[x].color=="gray"){
+        downCount++;
+      }
+    }
+
+    for(let x=0,y=500;x<downCount-1;x++,y+=500){
       setTimeout(() => {
 
-        console.log(x);
+        // console.log(x);
         this.columns[columnId].rows[x].color="gray";
         
       }, y);
       setTimeout(() => {
         
-        console.log(x+1);
+        // console.log(x+1);
         this.columns[columnId].rows[x+1].color=color;
 
       }, y);
     }
-
-
     // var num = parseInt(id);
     // var downCount = 0;
     // for(var x=0,y=parseInt(id);x<=5;x++,y+=12){
