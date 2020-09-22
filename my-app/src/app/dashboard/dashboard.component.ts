@@ -146,30 +146,54 @@ export class DashboardComponent implements OnInit {
 
   onClick(columnId,rowId){
 
-    console.log(this.columns[parseInt(columnId)].rows[parseInt(rowId)]);
+    // console.log(this.columns[parseInt(columnId)].rows[parseInt(rowId)]);
+
+    console.log(columnId + " " + rowId)
 
     // console.log("hello from onclick");
+
+    this.checkLocation(columnId,rowId);
 
     // this.checkLocation(id);
     // this.temp = id;
 
-    // if(this.restapi.player){
+    if(this.restapi.player){
 
-    //   this.users[(id)-1].color="red";
-      // this.restapi.player = !this.restapi.player;
-    // }else{
+      this.columns[columnId].rows[rowId].color="red";
+      //   this.users[(id)-1].color="red";
+      this.restapi.player = !this.restapi.player;
+    }else{
       
-    //   this.users[(id)-1].color="blue";
-      // this.restapi.player = !this.restapi.player;
-    // }
+      this.columns[columnId].rows[rowId].color="blue";
+      //   this.users[(id)-1].color="blue";
+      this.restapi.player = !this.restapi.player;
+    }
 
   }
 
-  checkLocation(id){
-    // var color = "blue";
-    // if(this.restapi.player){
-    //   color = "red"
-    // }
+  checkLocation(columnId,rowId){
+
+    var color = "blue";
+    if(this.restapi.player){
+      color = "red"
+    }
+
+    for(let x=0,y=500;x<5;x++,y+=500){
+      setTimeout(() => {
+
+        console.log(x);
+        this.columns[columnId].rows[x].color="gray";
+        
+      }, y);
+      setTimeout(() => {
+        
+        console.log(x+1);
+        this.columns[columnId].rows[x+1].color=color;
+
+      }, y);
+    }
+
+
     // var num = parseInt(id);
     // var downCount = 0;
     // for(var x=0,y=parseInt(id);x<=5;x++,y+=12){
@@ -180,13 +204,6 @@ export class DashboardComponent implements OnInit {
     // }
     // if(id==12){
     //   downCount--;
-    // }
-    // for(var x=0,y=500;x<downCount;x++,y+=500){
-    //   setTimeout(() => {
-    //     this.users[ ( num ) -1].color="gray"; num +=12;
-    //     this.users[ ( num ) -1].color=color;
-    //     this.checkAdjacent();
-    //   }, y);
     // }
 
     //esta ocupado {red o blue} // no des el ultimo paso
