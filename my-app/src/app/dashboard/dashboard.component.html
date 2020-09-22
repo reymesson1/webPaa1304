@@ -11,7 +11,7 @@
                 <div class="col-md-1" *ngFor="let user of columns; let i = index">
 
                         <div class="row" *ngFor="let row of user.rows; let i = index" >
-                                <span style="font-size:100px;" matTooltip="{{row.id}}" ><i [ngStyle]="{'color':row.color}" class="fa fa-circle" ></i></span>
+                                <span (click)="onClick(user.id,row.id)" style="font-size:100px;" matTooltip="{{row.id}}" ><i [ngStyle]="{'color':row.color}" class="fa fa-circle" ></i></span>
                         </div>
                         
                 </div>

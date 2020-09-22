@@ -144,46 +144,50 @@ export class DashboardComponent implements OnInit {
 
   // }
 
-  onClick(id){
+  onClick(columnId,rowId){
 
-    this.checkLocation(id);
-    this.temp = id;
+    console.log(this.columns[parseInt(columnId)].rows[parseInt(rowId)]);
 
-    if(this.restapi.player){
+    // console.log("hello from onclick");
 
-      this.users[(id)-1].color="red";
-      this.restapi.player = !this.restapi.player;
-    }else{
+    // this.checkLocation(id);
+    // this.temp = id;
+
+    // if(this.restapi.player){
+
+    //   this.users[(id)-1].color="red";
+      // this.restapi.player = !this.restapi.player;
+    // }else{
       
-      this.users[(id)-1].color="blue";
-      this.restapi.player = !this.restapi.player;
-    }
+    //   this.users[(id)-1].color="blue";
+      // this.restapi.player = !this.restapi.player;
+    // }
 
   }
 
   checkLocation(id){
-    var color = "blue";
-    if(this.restapi.player){
-      color = "red"
-    }
-    var num = parseInt(id);
-    var downCount = 0;
-    for(var x=0,y=parseInt(id);x<=5;x++,y+=12){
-      if(this.users[ (y) -1].color=="gray"){
-        downCount = parseInt(y/12); 
-        // console.log(downCount)
-      }
-    }
-    if(id==12){
-      downCount--;
-    }
-    for(var x=0,y=500;x<downCount;x++,y+=500){
-      setTimeout(() => {
-        this.users[ ( num ) -1].color="gray"; num +=12;
-        this.users[ ( num ) -1].color=color;
-        this.checkAdjacent();
-      }, y);
-    }
+    // var color = "blue";
+    // if(this.restapi.player){
+    //   color = "red"
+    // }
+    // var num = parseInt(id);
+    // var downCount = 0;
+    // for(var x=0,y=parseInt(id);x<=5;x++,y+=12){
+    //   if(this.users[ (y) -1].color=="gray"){
+    //     downCount = parseInt(y/12); 
+    //     // console.log(downCount)
+    //   }
+    // }
+    // if(id==12){
+    //   downCount--;
+    // }
+    // for(var x=0,y=500;x<downCount;x++,y+=500){
+    //   setTimeout(() => {
+    //     this.users[ ( num ) -1].color="gray"; num +=12;
+    //     this.users[ ( num ) -1].color=color;
+    //     this.checkAdjacent();
+    //   }, y);
+    // }
 
     //esta ocupado {red o blue} // no des el ultimo paso
     //si hago click en la segunda linea de arriba abajo son menos pasos.
