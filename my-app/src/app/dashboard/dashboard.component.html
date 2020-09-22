@@ -8,9 +8,11 @@
         </div>
         <div class="row">
                 
-                <div (click)="onClick(user.id)" class="col-md-1" *ngFor="let user of users; let i = index">
-                        
-                        <span style="font-size:100px;" matTooltip="{{user.id}}" ><i [ngStyle]="{'color':user.color}" class="fa fa-circle" ></i></span>
+                <div class="col-md-1" *ngFor="let user of columns; let i = index">
+
+                        <div class="row" *ngFor="let row of user.rows; let i = index" >
+                                <span style="font-size:100px;" matTooltip="{{row.id}}" ><i [ngStyle]="{'color':row.color}" class="fa fa-circle" ></i></span>
+                        </div>
                         
                 </div>
         </div>

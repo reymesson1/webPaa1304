@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { RestapiService, Task } from '../restapi.service';
+import { RestapiService, Task, Column } from '../restapi.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogOverviewExampleDialog } from './dialog-overview-example-dialog';
 
@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
   constructor(private restapi : RestapiService, public dialog: MatDialog) { }
 
   users: Task[] = [];
-  usersMulti: Task[][] = [12][6];
+  columns: Column[] = [];
   animal: string;
   name: string;
   temp : number = 0;
@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
 
     this.users = this.restapi.tasks; 
 
+    this.columns = this.restapi.columns;
 
   }
 
