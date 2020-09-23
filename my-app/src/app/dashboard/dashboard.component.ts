@@ -48,10 +48,6 @@ export class DashboardComponent implements OnInit {
 
       for(let y=0;y<3;y++){
         
-        // console.log( x + " " + y + " " + parseInt(y+1) + " " + parseInt(y+2) + " " + parseInt(y+3)  );
-
-        // console.log(this.columns[x].rows[y].color=="red"&&this.columns[x].rows[y+1].color=="red"&&this.columns[x].rows[y+2].color=="red"&&this.columns[x].rows[y+3].color=="red");
-
         if(this.columns[x].rows[y].color=="red"&&this.columns[x].rows[y+1].color=="red"&&this.columns[x].rows[y+2].color=="red"&&this.columns[x].rows[y+3].color=="red"){
 
           this.openDialog();
@@ -61,24 +57,7 @@ export class DashboardComponent implements OnInit {
     }
 
     // //diagonal horizontal
-    // for(let x=1;x<2;x++){
-    //   for(let y=1;y<2;y++){
-    //     console.log( parseInt(x) + "-"+ parseInt(y) + " " + parseInt(x+1)  + "-" + parseInt(y+1) + " " + parseInt(x+2) + "-" + parseInt(y+2) + " " + parseInt(x+3) + "-" + parseInt(y+3));
-    //   }
-    // }
-    // var x=0;
-    // var y=0;
-
-    // console.log( parseInt(x) + "-"+ parseInt(y) + " " + parseInt(x+1)  + "-" + parseInt(y+1) + " " + parseInt(x+2) + "-" + parseInt(y+2) + " " + parseInt(x+3) + "-" + parseInt(y+3));
-    // console.log( parseInt(x+1) + "-"+ parseInt(y+1) + " " + parseInt(x+1+1)  + "-" + parseInt(y+1+1) + " " + parseInt(x+2+1) + "-" + parseInt(y+2+1) + " " + parseInt(x+3+1) + "-" + parseInt(y+3+1));
-    // console.log( parseInt(x+1+1) + "-"+ parseInt(y+1+1) + " " + parseInt(x+1+1+1)  + "-" + parseInt(y+1+1+1) + " " + parseInt(x+2+1+1) + "-" + parseInt(y+2+1+1) + " " + parseInt(x+3+1+1) + "-" + parseInt(y+3+1+1));
-    
-    // console.log(" ");
-    // //suma uno solo columna -x 
-    // console.log( parseInt(x+1) + "-"+ parseInt(y) + " " + parseInt(x+1+1)  + "-" + parseInt(y+1) + " " + parseInt(x+2+1) + "-" + parseInt(y+2) + " " + parseInt(x+3+1) + "-" + parseInt(y+3));
-
-    //me queda pendiente 0-2 y 0-1 | 7-0 y 8-0
-    
+    //me queda pendiente 0-2 y 0-1 | 7-0 y 8-0    
     for(let x=0;x<7;x++){
       for(let y=0;y<3;y++){
         if(y==0){          
@@ -98,28 +77,23 @@ export class DashboardComponent implements OnInit {
     }
 
     // //diagonal vertical
-
     for(let x=0;x<1;x++){
       for(let y=5;y>=3;y--){
 
-        // console.log("test");
         if(y==5){
 
-          // console.log( parseInt(x) + "-" + parseInt(y) + " " + parseInt(x+1) + "-" + parseInt(y-1) + " " + parseInt(x+2) + "-" + parseInt(y-2) + " " + parseInt(x+3) + "-" + parseInt(y-3)  );
           if(this.columns[x].rows[y].color=="red"&&this.columns[x+1].rows[y-1].color=="red"&&this.columns[x+2].rows[y-2].color=="red"&&this.columns[x+3].rows[y-3].color=="red"){
            
             this.openDialog();
           }
         }else if(y==4){
 
-          // console.log( parseInt(x-1*-1) + "-" + parseInt(y) + " " + parseInt(x-2*-1) + "-" + parseInt(y-1) + " " + parseInt(x-3*-1) + "-" + parseInt(y-2) + " " + parseInt(x-4*-1) + "-" + parseInt(y-3)  );
           if(this.columns[x-1*-1].rows[y].color=="red"&&this.columns[x-2*-1].rows[y-1].color=="red"&&this.columns[x-3*-1].rows[y-2].color=="red"&&this.columns[x-4*-1].rows[y-3].color=="red"){
            
             this.openDialog();
           }
         }else if(y==3){
 
-          // console.log( parseInt(x-1*-2) + "-" + parseInt(y) + " " + parseInt(x-1*-2+1) + "-" + parseInt(y-1) + " " + parseInt(x-3*-1+1) + "-" + parseInt(y-2) + " " + parseInt(x-4*-1+1) + "-" + parseInt(y-3)  );
           if(this.columns[x-1*-2].rows[y].color=="red"&&this.columns[x-1*-2+1].rows[y-1].color=="red"&&this.columns[x+3*-1+1].rows[y-2].color=="red"&&this.columns[x+4*-1+1].rows[y-3].color=="red"){
            
             this.openDialog();
@@ -130,55 +104,7 @@ export class DashboardComponent implements OnInit {
       }
     }
 
-    // for(var x=parseInt(this.temp)-1,z=0;x<72;x+=11,z++){
 
-    //   if(parseInt(this.temp)==4){
-
-    //     if(z==0){
-          
-    //       console.log( parseInt(x) + " " + parseInt(x+11) + " " + parseInt(x+22) + " " + parseInt(x+33) );    
-    //       if( this.users[parseInt(x)].color=="red" && this.users[parseInt(x+11)].color=="red" &&  this.users[parseInt(x+22)].color=="red" && this.users[parseInt(x+33)].color=="red" ){
-
-    //         this.openDialog()
-    //       }    
-    //     }
-    //   }
-    //   if(parseInt(this.temp)==5){
-
-    //     if(z<2){
-
-    //       console.log( parseInt(x) + " " + parseInt(x+11) + " " + parseInt(x+22) + " " + parseInt(x+33) );    
-    //       if( this.users[parseInt(x)].color=="red" && this.users[parseInt(x+11)].color=="red" &&  this.users[parseInt(x+22)].color=="red" && this.users[parseInt(x+33)].color=="red" ){
-
-    //         this.openDialog()
-    //       }    
-    //     }
-    //   }
-    //   if(parseInt(this.temp)>=6){
-
-    //     if(z<3){
-
-    //       console.log( parseInt(x) + " " + parseInt(x+11) + " " + parseInt(x+22) + " " + parseInt(x+33) );    
-    //       if( this.users[parseInt(x)].color=="red" && this.users[parseInt(x+11)].color=="red" &&  this.users[parseInt(x+22)].color=="red" && this.users[parseInt(x+33)].color=="red" ){
-
-    //         this.openDialog()
-    //       }    
-    //     }
-    //   }
-
-
-    // }
-
-    //   if(this.users[parseInt(60)].color=="red" && this.users[parseInt(49)].color=="red" && this.users[parseInt(38)].color=="red" && this.users[parseInt(27)].color=="red" ){
-
-    //     this.openDialog();          
-    //   }else if(this.users[parseInt(48)].color=="red" && this.users[parseInt(37)].color=="red" && this.users[parseInt(26)].color=="red" && this.users[parseInt(15)].color=="red" ){
-      
-    //     this.openDialog();         
-    //   }else if(this.users[parseInt(36)].color=="red" && this.users[parseInt(25)].color=="red" && this.users[parseInt(14)].color=="red" && this.users[parseInt(3)].color=="red" ){
-      
-    //     this.openDialog();         
-    //   }
  
   }
 

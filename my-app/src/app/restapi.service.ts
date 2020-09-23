@@ -1,9 +1,18 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestapiService {
+
+  users = []
+  TOKEN_KEY = 'token'
+  path = "http://localhost:8082/";
+  
+  authPath = this.path + '/auth';
+
 
   player: boolean = false;//blue
 
@@ -84,8 +93,54 @@ export class RestapiService {
 
   tasks: Task[] = [  ];
 
-  constructor() { }
+  constructor(private http: HttpClient, private route: Router){}
 
+  get token(){
+    return localStorage.getItem(this.TOKEN_KEY);
+  }
+
+  get isAuthenticated(){
+      return !!localStorage.getItem(this.TOKEN_KEY)
+  }
+
+  logout(){
+      localStorage.removeItem(this.TOKEN_KEY);
+  }
+
+  getUsers() {
+      this.http.get<any>(this.path +'/users').subscribe(res =>{
+          this.users = res
+      })
+  }
+
+  getProfile(id) {
+      return this.http.get(this.path +'/profile/' + id)
+  }
+
+  sendUserRegistration(regData) {
+    this.http.post<any>(this.authPath + '/register', regData).subscribe(res =>{ 
+        console.log(res) 
+        localStorage.setItem(this.TOKEN_KEY, res.token)  
+        if(this.isAuthenticated){
+            this.route.navigateByUrl("/")
+        }else{
+            console.log("Registration Failed")
+        }     
+    })
+    
+  }
+
+  loginUser(loginData) {
+      this.http.post<any>(this.authPath + '/login', loginData).subscribe(res =>{
+          console.log(res);
+          localStorage.setItem(this.TOKEN_KEY, res.token)
+          if(this.isAuthenticated){
+              this.route.navigateByUrl("/")
+          }else{
+              console.log("Registration Failed")
+          }   
+      })
+  };
 
 }
 
