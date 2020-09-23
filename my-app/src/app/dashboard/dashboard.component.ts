@@ -53,6 +53,23 @@ export class DashboardComponent implements OnInit {
     // }
 
     // //vertical
+
+    for(let x=0;x<12;x++){
+
+      for(let y=0;y<3;y++){
+        
+        // console.log( x + " " + y + " " + parseInt(y+1) + " " + parseInt(y+2) + " " + parseInt(y+3)  );
+
+        console.log(this.columns[x].rows[y].color=="red"&&this.columns[x].rows[y+1].color=="red"&&this.columns[x].rows[y+2].color=="red"&&this.columns[x].rows[y+3].color=="red");
+        
+        if(this.columns[x].rows[y].color=="red"&&this.columns[x].rows[y+1].color=="red"&&this.columns[x].rows[y+2].color=="red"&&this.columns[x].rows[y+3].color=="red"){
+
+          this.openDialog();
+        }
+
+      }
+    }
+
     // for(var x=parseInt(this.temp)-1,z=0;x<72;x+=12,z++){
 
     //   if(z<3){
