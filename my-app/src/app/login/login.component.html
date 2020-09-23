@@ -1,7 +1,7 @@
-<div class="row">
+<div class="row" >
 
         <mat-tab-group>
-            <mat-tab label="Login"> 
+            <mat-tab label="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"> 
             
                 <div class="row">
 
@@ -13,26 +13,26 @@
                             <h1>Login</h1>
                         </div>
                         <div class="row">
-
-                            <div class="row"> 
-                                    <mat-form-field>
-                                        <mat-label>Username</mat-label>
-                                        <input matInput [(ngModel)]="name">
-                                    </mat-form-field>
-                            </div>
-                            <div class="row">
-                                    <mat-form-field>
-                                        <mat-label>Password</mat-label>
-                                        <input type="password" matInput [(ngModel)]="name">
-                                    </mat-form-field>
-                            </div>
+                            <form #f="ngForm" (ngSubmit)="login(f)" novalidate>
+                                <div class="row"> 
+                                        <mat-form-field>
+                                            <mat-label>Username</mat-label>
+                                            <input matInput name="username" ngModel #first="ngModel" />
+                                        </mat-form-field>
+                                </div>
                                 <div class="row">
-                                    <button mat-raised-button (click)="openDialog()">Enter</button>
+                                        <mat-form-field>
+                                            <mat-label>Password</mat-label>
+                                            <input type="password" matInput name="password" ngModel #first="ngModel" />
+                                        </mat-form-field>
+                                </div>
+                                <div class="row">
+                                    <button type="submit" mat-raised-button>Enter</button>
                                 </div>
                                 <div class="row" *ngIf="animal">
                                     You chose: <i>{{animal}}</i>
                                 </div>
-                            
+                            </form>
                         </div>
                     </div>
 
@@ -45,7 +45,7 @@
                 <br/>
             
             </mat-tab>
-            <mat-tab label="Registration"> 
+            <mat-tab label="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Registration&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"> 
             
                 <div class="row">
 

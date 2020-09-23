@@ -25,6 +25,9 @@ export class DashboardComponent implements OnInit {
 
     this.columns = this.restapi.columns;
 
+    if(!this.restapi.isAuthenticated){
+      this.openDialogLogin()
+    }    
   }
 
   checkAdjacent(columnId, rowId){
@@ -128,13 +131,13 @@ export class DashboardComponent implements OnInit {
 
     const dialogRef = this.dialog.open(LoginComponent, {
       width: '450px',
-      data: {name: this.name, animal: this.animal}
+      data: {name: this.name, animal: this.animal,'test':'test'}
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed');
+    //   this.animal = result;
+    // });
   
 
   }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class RestapiService {
   TOKEN_KEY = 'token'
   path = "http://localhost:8082/";
   
-  authPath = this.path + '/auth';
+  authPath = this.path + '/login';
 
 
   player: boolean = false;//blue
@@ -131,15 +132,53 @@ export class RestapiService {
   }
 
   loginUser(loginData) {
-      this.http.post<any>(this.authPath + '/login', loginData).subscribe(res =>{
-          console.log(res);
-          localStorage.setItem(this.TOKEN_KEY, res.token)
-          if(this.isAuthenticated){
-              this.route.navigateByUrl("/")
-          }else{
-              console.log("Registration Failed")
-          }   
-      })
+
+    this.http.post("http://localhost:8082/login",
+    {
+      "id": "1",
+      "username": loginData.value.username,
+      "password": loginData.value.password
+    },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+    .subscribe(
+        (val) => {
+            console.log("POST call successful value returned in body",val);
+            localStorage.setItem(this.TOKEN_KEY, val.token)
+            if(this.isAuthenticated){
+                // this.route.navigateByUrl("/")
+                location.reload();
+            }else{
+                console.log("Registration Failed")
+            }   
+
+         },
+        response => {
+           // this.data=response;
+          console.log("POST call in error", response.token);
+        //   localStorage.setItem(this.TOKEN_KEY, response.token)
+        //   if(this.isAuthenticated){
+        //       this.route.navigateByUrl("/")
+        //   }else{
+        //       console.log("Registration Failed")
+        //   }   
+
+        },
+        () => {
+          console.log("The POST observable is now completed.");
+    }); 
+
+
+    //   console.log(loginData.value.username);
+    //   this.http.post<any>(this.authPath, {'username':loginData.value.username}).subscribe(res =>{
+    // this.http.get("http://localhost:8080/masters", {headers: new HttpHeaders({ 'Content-Type':'application/json', Authorization: "Bearer "+localStorage.getItem('token')})})
+
+        // console.log(res);
+    //       localStorage.setItem(this.TOKEN_KEY, res.token)
+    //       if(this.isAuthenticated){
+    //           this.route.navigateByUrl("/")
+    //       }else{
+    //           console.log("Registration Failed")
+    //       }   
+    //   })
   };
 
 }

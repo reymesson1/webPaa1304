@@ -10,6 +10,8 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 var jwt = require('jwt-simple');
 var userController = require('./controller/userController');
+var cors = require('cors');
+app.use(cors())
 
 app.get('/logout', userController.getLogout);
 

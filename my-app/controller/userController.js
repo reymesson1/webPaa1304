@@ -24,15 +24,16 @@ exports.setRegister = async(req,res)=>{
 
 exports.setLogin = async(req,res)=>{
 
-    var log
+    console.log(req.body);
+    // var log
     
-    if(req.body.nameValuePairs){
-        log = req.body.nameValuePairs
-    }else{
-        log = req.body
-    }
+    // if(req.body.nameValuePairs){
+    //     log = req.body.nameValuePairs
+    // }else{
+    //     log = req.body
+    // }
 
-    var userData = log;
+    var userData = req.body;
     var user = await User.findOne({username: userData.username});
     
     if(!user){

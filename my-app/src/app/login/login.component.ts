@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RestapiService } from '../restapi.service';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,14 +12,22 @@ export class LoginComponent implements OnInit {
   animal: string;
   name: string;
 
-  constructor() { }
+  constructor(private restapi : RestapiService) { }
+
+  login(event){
+
+    this.restapi.loginUser(event);
+  }
 
   openDialog(){
 
-    
+
   }
 
   ngOnInit(): void {
+
+
+
   }
 
 }
