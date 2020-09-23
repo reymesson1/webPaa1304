@@ -127,7 +127,7 @@ export class DashboardComponent implements OnInit {
   openDialogLogin(): void {
 
     const dialogRef = this.dialog.open(LoginComponent, {
-      width: '250px',
+      width: '450px',
       data: {name: this.name, animal: this.animal}
     });
 

@@ -7,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  animal: string;
+  name: string;
+
   constructor() { }
+
+  openDialog(){
+
+    
+  }
 
   ngOnInit(): void {
   }

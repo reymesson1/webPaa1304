@@ -15,6 +15,8 @@ import { LoginComponent } from './login/login.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
+import {MatTabsModule} from '@angular/material/tabs';
+
 import { DialogOverviewExampleDialog } from './dashboard/dialog-overview-example-dialog';
 
 
@@ -36,11 +38,12 @@ import { DialogOverviewExampleDialog } from './dashboard/dialog-overview-example
     MatButtonModule,
     MatTooltipModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [MatToolbarModule, MatIconModule, MatTooltipModule, MatDialogModule],
+  exports: [MatToolbarModule, MatIconModule, MatTooltipModule, MatDialogModule, MatTabsModule],
 
 })
 export class AppModule { }

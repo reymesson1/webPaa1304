@@ -1,1 +1,100 @@
-<p>login works!</p>
+<div class="row">
+
+        <mat-tab-group>
+            <mat-tab label="Login"> 
+            
+                <div class="row">
+
+                    <br/>
+                    <br/>
+                    <div class="col-md-4"></div>    
+                    <div class="col-md-4">    
+                        <div class="row">
+                            <h1>Login</h1>
+                        </div>
+                        <div class="row">
+
+                            <div class="row"> 
+                                    <mat-form-field>
+                                        <mat-label>Username</mat-label>
+                                        <input matInput [(ngModel)]="name">
+                                    </mat-form-field>
+                            </div>
+                            <div class="row">
+                                    <mat-form-field>
+                                        <mat-label>Password</mat-label>
+                                        <input type="password" matInput [(ngModel)]="name">
+                                    </mat-form-field>
+                            </div>
+                                <div class="row">
+                                    <button mat-raised-button (click)="openDialog()">Enter</button>
+                                </div>
+                                <div class="row" *ngIf="animal">
+                                    You chose: <i>{{animal}}</i>
+                                </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="col-md-4"></div>    
+
+                </div>
+
+                <br/>
+                <br/>
+                <br/>
+            
+            </mat-tab>
+            <mat-tab label="Registration"> 
+            
+                <div class="row">
+
+                    <br/>
+                    <br/>
+                    <div class="col-md-4"></div>    
+                    <div class="col-md-4">    
+                        <div class="row">
+                                <h1 mat-dialog-title> Registration </h1>
+                        </div>
+                        <div class="row">
+
+                            <div class="row">
+                                    <mat-form-field>
+                                        <mat-label>Username</mat-label>
+                                        <input matInput [(ngModel)]="name">
+                                    </mat-form-field>
+                            </div>
+                            <div class="row">
+                                    <mat-form-field>
+                                        <mat-label>Password</mat-label>
+                                        <input type="password" matInput [(ngModel)]="name">
+                                    </mat-form-field>
+                            </div>
+                            <div class="row">
+                                    <mat-form-field>
+                                        <mat-label>Re-type Password</mat-label>
+                                        <input type="password" matInput [(ngModel)]="name">
+                                    </mat-form-field>
+                            </div>
+                                <div class="row">
+                                    <button mat-raised-button (click)="openDialog()">Register</button>
+                                </div>
+                                <div class="row" *ngIf="animal">
+                                    You chose: <i>{{animal}}</i>
+                                </div>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4"></div>    
+
+                </div>
+
+                <br/>
+                <br/>
+                <br/>
+            
+            </mat-tab>
+        </mat-tab-group>
+
+</div>
