@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +27,8 @@ import { DialogOverviewExampleDialog } from './dashboard/dialog-overview-example
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    RouterModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,

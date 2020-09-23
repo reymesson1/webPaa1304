@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { RestapiService, Task, Column } from '../restapi.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogOverviewExampleDialog } from './dialog-overview-example-dialog';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -111,6 +112,21 @@ export class DashboardComponent implements OnInit {
   openDialog(): void {
 
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  
+
+  }
+
+  openDialogLogin(): void {
+
+    const dialogRef = this.dialog.open(LoginComponent, {
       width: '250px',
       data: {name: this.name, animal: this.animal}
     });
