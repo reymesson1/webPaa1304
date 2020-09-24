@@ -17,6 +17,8 @@ export class RestapiService {
 
   player: boolean = false;//blue
 
+  columnsTwo: Column[] = [];
+
   columns: Column[] = [
     new Column(0, [new Task(0,"name","gray"),
                     new Task(1,"name","gray"),
@@ -187,6 +189,51 @@ export class RestapiService {
     }); 
 
   };
+
+  getMaster(){
+
+    this.http.get("http://localhost:8082/columns",
+    {headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+    .subscribe(
+        (val) => {
+            console.log("POST call successful value returned in body",val[0].columns);
+            // this.columns = val[0];
+            this.columnsTwo = val[0].columns
+            // return val;
+         },
+        response => {
+          console.log("POST call in error", response.token);
+        },
+        () => {
+          console.log("The POST observable is now completed.");
+    });
+
+
+  }
+
+  setMaster(columns : Column){
+
+    this.http.post("http://localhost:8082/column",
+    {
+      "id": "1",
+      "columns": columns,
+      "creator": this.token
+    },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+    .subscribe(
+        (val) => {
+            console.log("POST call successful value returned in body",val);
+         },
+        response => {
+          console.log("POST call in error", response.token);
+        },
+        () => {
+          console.log("The POST observable is now completed.");
+    });
+    
+
+  }
+
+
 
 }
 

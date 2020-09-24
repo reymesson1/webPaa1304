@@ -22,6 +22,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { DialogOverviewExampleDialog } from './dashboard/dialog-overview-example-dialog';
 import { UserComponent } from './user/user.component';
 import { RegisterComponent } from './register/register.component';
+import { ViewScoreComponent } from './view-score/view-score.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { RegisterComponent } from './register/register.component';
     LoginComponent,
     DialogOverviewExampleDialog,
     UserComponent,
-    RegisterComponent
+    RegisterComponent,
+    ViewScoreComponent
   ],
   imports: [
     BrowserModule,

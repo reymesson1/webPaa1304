@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RestapiService } from '../restapi.service';
 import {NgForm} from '@angular/forms';
 
-@Component({
+@Component({ 
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']

@@ -22,13 +22,29 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void { 
 
+    this.restapi.getMaster();
+
     this.users = this.restapi.tasks; 
 
-    this.columns = this.restapi.columns;
+    // this.columns = [{"columns":[{"id":0,"rows":[{"color":"gray","id":0,"name":"name"},{"color":"gray","id":1,"name":"name"},{"color":"gray","id":2,"name":"name"},{"color":"gray","id":3,"name":"name"},{"color":"red","id":4,"name":"name"},{"color":"red","id":5,"name":"name"}]},{"id":1,"rows":[{"color":"gray","id":0,"name":"name"},{"color":"gray","id":1,"name":"name"},{"color":"gray","id":2,"name":"name"},{"color":"gray","id":3,"name":"name"},{"color":"blue","id":4,"name":"name"},{"color":"blue","id":5,"name":"name"}]},{"id":2,"rows":[{"color":"gray","id":0,"name":"name"},{"color":"gray","id":1,"name":"name"},{"color":"gray","id":2,"name":"name"},{"color":"gray","id":3,"name":"name"},{"color":"red","id":4,"name":"name"},{"color":"red","id":5,"name":"name"}]},{"id":3,"rows":[{"color":"gray","id":0,"name":"name"},{"color":"gray","id":1,"name":"name"},{"color":"gray","id":2,"name":"name"},{"color":"gray","id":3,"name":"name"},{"color":"blue","id":4,"name":"name"},{"color":"blue","id":5,"name":"name"}]},{"id":4,"rows":[{"color":"gray","id":0,"name":"name"},{"color":"gray","id":1,"name":"name"},{"color":"gray","id":2,"name":"name"},{"color":"gray","id":3,"name":"name"},{"color":"gray","id":4,"name":"name"},{"color":"gray","id":5,"name":"name"}]},{"id":5,"rows":[{"color":"gray","id":0,"name":"name"},{"color":"gray","id":1,"name":"name"},{"color":"gray","id":2,"name":"name"},{"color":"gray","id":3,"name":"name"},{"color":"gray","id":4,"name":"name"},{"color":"gray","id":5,"name":"name"}]},{"id":6,"rows":[{"color":"gray","id":0,"name":"name"},{"color":"gray","id":1,"name":"name"},{"color":"gray","id":2,"name":"name"},{"color":"gray","id":3,"name":"name"},{"color":"gray","id":4,"name":"name"},{"color":"gray","id":5,"name":"name"}]},{"id":7,"rows":[{"color":"gray","id":0,"name":"name"},{"color":"gray","id":1,"name":"name"},{"color":"gray","id":2,"name":"name"},{"color":"gray","id":3,"name":"name"},{"color":"gray","id":4,"name":"name"},{"color":"gray","id":5,"name":"name"}]},{"id":8,"rows":[{"color":"gray","id":0,"name":"name"},{"color":"gray","id":1,"name":"name"},{"color":"gray","id":2,"name":"name"},{"color":"gray","id":3,"name":"name"},{"color":"gray","id":4,"name":"name"},{"color":"gray","id":5,"name":"name"}]},{"id":9,"rows":[{"color":"gray","id":0,"name":"name"},{"color":"gray","id":1,"name":"name"},{"color":"gray","id":2,"name":"name"},{"color":"gray","id":3,"name":"name"},{"color":"gray","id":4,"name":"name"},{"color":"gray","id":5,"name":"name"}]},{"id":10,"rows":[{"color":"gray","id":0,"name":"name"},{"color":"gray","id":1,"name":"name"},{"color":"gray","id":2,"name":"name"},{"color":"gray","id":3,"name":"name"},{"color":"gray","id":4,"name":"name"},{"color":"gray","id":5,"name":"name"}]},{"id":11,"rows":[{"color":"gray","id":0,"name":"name"},{"color":"gray","id":1,"name":"name"},{"color":"gray","id":2,"name":"name"},{"color":"gray","id":3,"name":"name"},{"color":"gray","id":4,"name":"name"},{"color":"gray","id":5,"name":"name"}]}],"_id":"5f6c0e1d68467635e07ba0f2","id":"1","creator":null,"__v":0}]
+
+    this.columns = this.restapi.columnsTwo;
+
+    // console.log(this.restapi.getMaster());
+
+    // console.log(this.restapi.columns);
+
+    // this.columns = this.restapi.getMaster()[0];
+    // this.columns = [{"id":0,"rows":[{"color":"gray","id":0,"name":"name"},{"color":"gray","id":1,"name":"name"},{"color":"gray","id":2,"name":"name"},{"color":"gray","id":3,"name":"name"},{"color":"red","id":4,"name":"name"},{"color":"red","id":5,"name":"name"}]},{"id":1,"rows":[{"color":"gray","id":0,"name":"name"},{"color":"gray","id":1,"name":"name"},{"color":"gray","id":2,"name":"name"},{"color":"gray","id":3,"name":"name"},{"color":"blue","id":4,"name":"name"},{"color":"blue","id":5,"name":"name"}]},{"id":2,"rows":[{"color":"gray","id":0,"name":"name"},{"color":"gray","id":1,"name":"name"},{"color":"gray","id":2,"name":"name"},{"color":"gray","id":3,"name":"name"},{"color":"red","id":4,"name":"name"},{"color":"red","id":5,"name":"name"}]},{"id":3,"rows":[{"color":"gray","id":0,"name":"name"},{"color":"gray","id":1,"name":"name"},{"color":"gray","id":2,"name":"name"},{"color":"gray","id":3,"name":"name"},{"color":"blue","id":4,"name":"name"},{"color":"blue","id":5,"name":"name"}]},{"id":4,"rows":[{"color":"gray","id":0,"name":"name"},{"color":"gray","id":1,"name":"name"},{"color":"gray","id":2,"name":"name"},{"color":"gray","id":3,"name":"name"},{"color":"gray","id":4,"name":"name"},{"color":"gray","id":5,"name":"name"}]},{"id":5,"rows":[{"color":"gray","id":0,"name":"name"},{"color":"gray","id":1,"name":"name"},{"color":"gray","id":2,"name":"name"},{"color":"gray","id":3,"name":"name"},{"color":"gray","id":4,"name":"name"},{"color":"gray","id":5,"name":"name"}]},{"id":6,"rows":[{"color":"gray","id":0,"name":"name"},{"color":"gray","id":1,"name":"name"},{"color":"gray","id":2,"name":"name"},{"color":"gray","id":3,"name":"name"},{"color":"gray","id":4,"name":"name"},{"color":"gray","id":5,"name":"name"}]},{"id":7,"rows":[{"color":"gray","id":0,"name":"name"},{"color":"gray","id":1,"name":"name"},{"color":"gray","id":2,"name":"name"},{"color":"gray","id":3,"name":"name"},{"color":"gray","id":4,"name":"name"},{"color":"gray","id":5,"name":"name"}]},{"id":8,"rows":[{"color":"gray","id":0,"name":"name"},{"color":"gray","id":1,"name":"name"},{"color":"gray","id":2,"name":"name"},{"color":"gray","id":3,"name":"name"},{"color":"gray","id":4,"name":"name"},{"color":"gray","id":5,"name":"name"}]},{"id":9,"rows":[{"color":"gray","id":0,"name":"name"},{"color":"gray","id":1,"name":"name"},{"color":"gray","id":2,"name":"name"},{"color":"gray","id":3,"name":"name"},{"color":"gray","id":4,"name":"name"},{"color":"gray","id":5,"name":"name"}]},{"id":10,"rows":[{"color":"gray","id":0,"name":"name"},{"color":"gray","id":1,"name":"name"},{"color":"gray","id":2,"name":"name"},{"color":"gray","id":3,"name":"name"},{"color":"gray","id":4,"name":"name"},{"color":"gray","id":5,"name":"name"}]},{"id":11,"rows":[{"color":"gray","id":0,"name":"name"},{"color":"gray","id":1,"name":"name"},{"color":"gray","id":2,"name":"name"},{"color":"gray","id":3,"name":"name"},{"color":"gray","id":4,"name":"name"},{"color":"gray","id":5,"name":"name"}]}]
+
+    // this.columns = this.restapi.getMaster()
+
+    // console.log(this.restapi.getMaster());
 
     if(!this.restapi.isAuthenticated){
       this.openDialogLogin()
     }    
+
   }
 
   checkAdjacent(columnId, rowId){
@@ -124,6 +140,10 @@ export class DashboardComponent implements OnInit {
       console.log('The dialog was closed');
       this.animal = result;
     });
+
+    this.restapi.setMaster(this.columns);
+
+    console.log(this.columns);
   
 
   }
