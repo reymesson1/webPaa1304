@@ -192,21 +192,21 @@ export class RestapiService {
 
   getMaster(){
 
-    this.http.get("http://localhost:8082/columns",
+    return this.http.get("http://localhost:8082/columns",
     {headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
-    .subscribe(
-        (val) => {
-            console.log("POST call successful value returned in body",val[0].columns);
-            // this.columns = val[0];
-            this.columnsTwo = val[0].columns
-            // return val;
-         },
-        response => {
-          console.log("POST call in error", response.token);
-        },
-        () => {
-          console.log("The POST observable is now completed.");
-    });
+    // .subscribe(
+    //     (val) => {
+    //         console.log("POST call successful value returned in body",val[0].columns);
+    //         // this.columns = val[0];
+    //         this.columnsTwo = val[0].columns
+    //         // return val;
+    //      },
+    //     response => {
+    //       console.log("POST call in error", response.token);
+    //     },
+    //     () => {
+    //       console.log("The POST observable is now completed.");
+    // });
 
 
   }

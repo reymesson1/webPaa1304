@@ -41,6 +41,12 @@ export class DashboardComponent implements OnInit {
 
     // console.log(this.restapi.getMaster());
 
+    this.restapi.getMaster()
+    .subscribe(data => data.map(dat=>{
+      console.log(dat.columns)
+      this.columns = dat.columns
+    }));
+
     if(!this.restapi.isAuthenticated){
       this.openDialogLogin()
     }    
