@@ -118,16 +118,44 @@ export class RestapiService {
       return this.http.get(this.path +'/profile/' + id)
   }
 
-  sendUserRegistration(regData) {
-    this.http.post<any>(this.authPath + '/register', regData).subscribe(res =>{ 
-        console.log(res) 
-        localStorage.setItem(this.TOKEN_KEY, res.token)  
-        if(this.isAuthenticated){
-            this.route.navigateByUrl("/")
-        }else{
-            console.log("Registration Failed")
-        }     
-    })
+  sendUserRegistration(loginData) {
+
+    this.http.post("http://localhost:8082/register",
+    {
+      "id": "1",
+      "username": loginData.value.username,
+      "password": loginData.value.password
+    },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+    .subscribe(
+        (val) => {
+            console.log("POST call successful value returned in body",val);
+            localStorage.setItem(this.TOKEN_KEY, val.token)
+            if(this.isAuthenticated){
+                location.reload();
+            }else{
+                console.log("Registration Failed")
+            }   
+
+         },
+        response => {
+          console.log("POST call in error", response.token);
+
+        },
+        () => {
+          console.log("The POST observable is now completed.");
+    }); 
+
+
+
+    // this.http.post<any>(this.authPath + '/register', regData).subscribe(res =>{ 
+    //     console.log(res) 
+    //     localStorage.setItem(this.TOKEN_KEY, res.token)  
+    //     if(this.isAuthenticated){
+    //         this.route.navigateByUrl("/")
+    //     }else{
+    //         console.log("Registration Failed")
+    //     }     
+    // })
     
   }
 
@@ -144,7 +172,6 @@ export class RestapiService {
             console.log("POST call successful value returned in body",val);
             localStorage.setItem(this.TOKEN_KEY, val.token)
             if(this.isAuthenticated){
-                // this.route.navigateByUrl("/")
                 location.reload();
             }else{
                 console.log("Registration Failed")
@@ -152,33 +179,13 @@ export class RestapiService {
 
          },
         response => {
-           // this.data=response;
           console.log("POST call in error", response.token);
-        //   localStorage.setItem(this.TOKEN_KEY, response.token)
-        //   if(this.isAuthenticated){
-        //       this.route.navigateByUrl("/")
-        //   }else{
-        //       console.log("Registration Failed")
-        //   }   
 
         },
         () => {
           console.log("The POST observable is now completed.");
     }); 
 
-
-    //   console.log(loginData.value.username);
-    //   this.http.post<any>(this.authPath, {'username':loginData.value.username}).subscribe(res =>{
-    // this.http.get("http://localhost:8080/masters", {headers: new HttpHeaders({ 'Content-Type':'application/json', Authorization: "Bearer "+localStorage.getItem('token')})})
-
-        // console.log(res);
-    //       localStorage.setItem(this.TOKEN_KEY, res.token)
-    //       if(this.isAuthenticated){
-    //           this.route.navigateByUrl("/")
-    //       }else{
-    //           console.log("Registration Failed")
-    //       }   
-    //   })
   };
 
 }

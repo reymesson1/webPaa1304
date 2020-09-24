@@ -3,6 +3,7 @@ import { RestapiService, Task, Column } from '../restapi.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogOverviewExampleDialog } from './dialog-overview-example-dialog';
 import { LoginComponent } from '../login/login.component';
+import { UserComponent } from '../user/user.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -129,7 +130,7 @@ export class DashboardComponent implements OnInit {
 
   openDialogLogin(): void {
 
-    const dialogRef = this.dialog.open(LoginComponent, {
+    const dialogRef = this.dialog.open(UserComponent, {
       width: '450px',
       data: {name: this.name, animal: this.animal,'test':'test'}
     });

@@ -20,18 +20,10 @@ exports.setRegister = async(req,res)=>{
             console.log('User saved');
         }
     })
+
 }
 
 exports.setLogin = async(req,res)=>{
-
-    console.log(req.body);
-    // var log
-    
-    // if(req.body.nameValuePairs){
-    //     log = req.body.nameValuePairs
-    // }else{
-    //     log = req.body
-    // }
 
     var userData = req.body;
     var user = await User.findOne({username: userData.username});
