@@ -217,7 +217,7 @@ export class RestapiService {
     {
       "id": "1",
       "columns": columns,
-      "status": "draw",
+      "status": "win",
       "creator": this.token
     },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
     .subscribe(
@@ -231,6 +231,13 @@ export class RestapiService {
           console.log("The POST observable is now completed.");
     });
     
+
+  }
+
+  getRecapGame(){
+
+    return this.http.get("http://localhost:8082/gamerecap",
+    {headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
 
   }
 

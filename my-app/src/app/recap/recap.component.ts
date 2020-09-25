@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RestapiService} from '../restapi.service';
 
 @Component({
   selector: 'app-recap',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecapComponent implements OnInit {
 
-  constructor() { }
+  constructor(public restapi : RestapiService) { }
+
+  win: string;
+  loss: string;
+  draw: string;
+  recap: any[] = [];
 
   ngOnInit(): void {
+
+      // this.restapi.getRecapGame()
+      // .subscribe(data => data.map(dat=>{
+      //   console.log(dat)
+      // }))
+      this.restapi.getRecapGame()
+      .subscribe(data => {
+        console.log(data);
+        this.recap = data    
+      })    
+
   }
 
 }
