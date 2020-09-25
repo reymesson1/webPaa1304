@@ -19,6 +19,9 @@ export class DashboardComponent implements OnInit {
   animal: string; 
   name: string;
   temp : number = 0;
+  timeLeft: number = 60;
+  interval;
+
 
   ngOnInit(): void { 
 
@@ -36,6 +39,19 @@ export class DashboardComponent implements OnInit {
       this.openDialogLogin()
     }    
 
+  }
+
+  startTimer() {
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+        if(this.timeLeft==0){
+          alert('Test')
+        }
+      } else {
+        this.timeLeft = 60;
+      }
+    },1000)
   }
 
   checkAdjacent(columnId, rowId){

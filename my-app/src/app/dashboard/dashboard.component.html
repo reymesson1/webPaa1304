@@ -4,6 +4,17 @@
 <br/>
 <br/>
         <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                        <p>{{timeLeft}} Seconds Left....</p>
+                </div>
+                <div class="col-md-4"></div>
+        </div>
+        <div class="row">
+                <button (click)='startTimer()'>Start Timer</button>
+
+        </div>
+        <div class="row">
                 <button mat-raised-button (click)="openDialog()">Pick one</button>
         </div>
         <div class="row">
