@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RestapiService } from 'src/app/restapi.service';
 
 @Component({
   selector: 'app-historial',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistorialComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit(): void {
+  historial: any[] = [];
+
+  constructor(public restapi : RestapiService) { }
+
+  ngOnInit(): void { 
+
+    this.restapi.getHistorial()
+    .subscribe(data => {
+      console.log(data);
+      this.historial = data    
+    })    
+ 
   }
+
+
 
 }

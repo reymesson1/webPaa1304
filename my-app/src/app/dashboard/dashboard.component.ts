@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
 
   users: Task[] = [];
   columns: Column[] = [];
-  animal: string;
+  animal: string; 
   name: string;
   temp : number = 0;
 

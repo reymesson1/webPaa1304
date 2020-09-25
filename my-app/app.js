@@ -20,6 +20,8 @@ app.get('/columns', columnController.getColumn);
 
 app.get('/gamerecap', columnController.getGameRecap);
 
+app.get('/historial', columnController.getHistorial);
+
 app.post('/column', columnController.setColumn);
 
 app.post('/register', userController.setRegister);

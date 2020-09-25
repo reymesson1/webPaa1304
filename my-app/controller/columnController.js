@@ -35,3 +35,11 @@ exports.getGameRecap = async(req,res)=>{
     res.send(master);
 
 }
+
+exports.getHistorial = async(req,res)=>{
+
+    var column = await Column.find({"status":"win"})
+    
+    res.send(column);
+
+}

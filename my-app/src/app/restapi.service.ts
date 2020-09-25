@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import * as moment from 'moment';
 
 
 @Injectable({
@@ -216,8 +217,9 @@ export class RestapiService {
     this.http.post("http://localhost:8082/column",
     {
       "id": "1",
+      "date": moment().format("YYYY MM DD"),
       "columns": columns,
-      "status": "win",
+      "status": "loss",
       "creator": this.token
     },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
     .subscribe(
@@ -237,6 +239,13 @@ export class RestapiService {
   getRecapGame(){
 
     return this.http.get("http://localhost:8082/gamerecap",
+    {headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+
+  }
+
+  getHistorial(){
+
+    return this.http.get("http://localhost:8082/historial",
     {headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
 
   }
