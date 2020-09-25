@@ -23,6 +23,8 @@ import { DialogOverviewExampleDialog } from './dashboard/dialog-overview-example
 import { UserComponent } from './user/user.component';
 import { RegisterComponent } from './register/register.component';
 import { ViewScoreComponent } from './view-score/view-score.component';
+import { RecapComponent } from './recap/recap.component';
+import { HistorialComponent } from './historial/historial.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { ViewScoreComponent } from './view-score/view-score.component';
     DialogOverviewExampleDialog,
     UserComponent,
     RegisterComponent,
-    ViewScoreComponent
+    ViewScoreComponent,
+    RecapComponent,
+    HistorialComponent
   ],
   imports: [
     BrowserModule,

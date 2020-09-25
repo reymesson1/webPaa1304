@@ -120,7 +120,7 @@ export class RestapiService {
       return this.http.get(this.path +'/profile/' + id)
   }
 
-  sendUserRegistration(loginData) {
+  sendUserRegistration(loginData) { 
 
     this.http.post("http://localhost:8082/register",
     {
@@ -129,7 +129,7 @@ export class RestapiService {
       "password": loginData.value.password
     },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
     .subscribe(
-        (val) => {
+        (val:any) => {
             console.log("POST call successful value returned in body",val);
             localStorage.setItem(this.TOKEN_KEY, val.token)
             if(this.isAuthenticated){
@@ -170,7 +170,7 @@ export class RestapiService {
       "password": loginData.value.password
     },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
     .subscribe(
-        (val) => {
+        (val:any) => {
             console.log("POST call successful value returned in body",val);
             localStorage.setItem(this.TOKEN_KEY, val.token)
             if(this.isAuthenticated){
@@ -217,6 +217,7 @@ export class RestapiService {
     {
       "id": "1",
       "columns": columns,
+      "status": "draw",
       "creator": this.token
     },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
     .subscribe(
