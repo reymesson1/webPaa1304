@@ -22,7 +22,8 @@ export class RecapComponent implements OnInit {
       //   console.log(dat)
       // }))
       this.restapi.getRecapGame()
-      .subscribe(data => {
+      .subscribe(
+        (data : any) => {
         console.log(data);
         this.recap = data    
       })    

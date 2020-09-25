@@ -212,7 +212,7 @@ export class RestapiService {
 
   }
 
-  setMaster(columns : Column){
+  setMaster(columns : Column[]){
 
     this.http.post("http://localhost:8082/column",
     {

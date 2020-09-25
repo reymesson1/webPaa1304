@@ -16,7 +16,8 @@ export class HistorialComponent implements OnInit {
   ngOnInit(): void { 
 
     this.restapi.getHistorial()
-    .subscribe(data => {
+    .subscribe(
+        (data : any) => {
       console.log(data);
       this.historial = data    
     })    
