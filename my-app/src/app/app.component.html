@@ -4,8 +4,11 @@
     </button>
     <span>My Application</span>
     <div class="col-md-offset-10">
-        <button (click)="play()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <button *ngIf="!bool" (click)="play()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
             <mat-icon>volume_up</mat-icon>
+        </button>
+        <button *ngIf="bool" (click)="play()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+            <mat-icon>volume_off</mat-icon>
         </button>
     </div>
 </mat-toolbar>
