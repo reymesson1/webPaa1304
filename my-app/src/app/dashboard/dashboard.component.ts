@@ -39,6 +39,10 @@ export class DashboardComponent implements OnInit {
       this.openDialogLogin()
     }    
 
+    if(this.restapi.isAuthenticated){
+      this.openDialog()
+    }    
+
   }
 
   startTimer() {
@@ -63,6 +67,7 @@ export class DashboardComponent implements OnInit {
         
         if(this.columns[y].rows[x].color=="red"&&this.columns[y+2].rows[x].color=="red"&&this.columns[y+3].rows[x].color=="red"){
 
+          this.restapi.message = "Won Red";          
           this.openDialog();
         }
 
@@ -78,6 +83,7 @@ export class DashboardComponent implements OnInit {
         
         if(this.columns[x].rows[y].color=="red"&&this.columns[x].rows[y+1].color=="red"&&this.columns[x].rows[y+2].color=="red"&&this.columns[x].rows[y+3].color=="red"){
 
+          this.restapi.message = "Won Red";
           this.openDialog();
         }
 
@@ -90,14 +96,20 @@ export class DashboardComponent implements OnInit {
       for(let y=0;y<3;y++){
         if(y==0){          
           if(this.columns[x].rows[y].color=="red"&&this.columns[x+1].rows[y+1].color=="red"&&this.columns[x+2].rows[y+2].color=="red"&&this.columns[x+3].rows[y+3].color=="red"){
+
+            this.restapi.message = "Won Red";
             this.openDialog();
           }
         }else if(y==1){          
           if(this.columns[x+1].rows[y].color=="red"&&this.columns[x+2].rows[y+1].color=="red"&&this.columns[x+3].rows[y+2].color=="red"&&this.columns[x+4].rows[y+3].color=="red"){
+
+            this.restapi.message = "Won Red";
             this.openDialog();
           }
         }else if(y==2){          
           if(this.columns[x+2].rows[y].color=="red"&&this.columns[x+3].rows[y+1].color=="red"&&this.columns[x+4].rows[y+2].color=="red"&&this.columns[x+5].rows[y+3].color=="red"){
+
+            this.restapi.message = "Won Red";
             this.openDialog();
           }
         }
@@ -111,19 +123,22 @@ export class DashboardComponent implements OnInit {
         if(y==5){
 
           if(this.columns[x].rows[y].color=="red"&&this.columns[x+1].rows[y-1].color=="red"&&this.columns[x+2].rows[y-2].color=="red"&&this.columns[x+3].rows[y-3].color=="red"){
-           
+
+            this.restapi.message = "Won Red";           
             this.openDialog();
           }
         }else if(y==4){
 
           if(this.columns[x-1*-1].rows[y].color=="red"&&this.columns[x-2*-1].rows[y-1].color=="red"&&this.columns[x-3*-1].rows[y-2].color=="red"&&this.columns[x-4*-1].rows[y-3].color=="red"){
-           
+
+           this.restapi.message = "Won Red";
             this.openDialog();
           }
         }else if(y==3){
 
           if(this.columns[x-1*-2].rows[y].color=="red"&&this.columns[x-1*-2+1].rows[y-1].color=="red"&&this.columns[x+3*-1+1].rows[y-2].color=="red"&&this.columns[x+4*-1+1].rows[y-3].color=="red"){
            
+            this.restapi.message = "Won Red";
             this.openDialog();
           }
 
@@ -137,6 +152,8 @@ export class DashboardComponent implements OnInit {
   }
 
   openDialog(): void {
+
+    // this.restapi.message = "Won Red";
 
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '450px',

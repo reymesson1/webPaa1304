@@ -8,10 +8,17 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 })
 export class DialogOverviewExampleDialog {
 
+    message : string;
     isScore : boolean = false;
 
     constructor(private restapi : RestapiService,public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,@Inject(MAT_DIALOG_DATA) public data: DialogData) 
     {}
+
+    ngOnInit(): void { 
+    
+        this.message = this.restapi.message;
+    }
+    
 
     onNoClick(): void {
         // this.dialogRef.close();

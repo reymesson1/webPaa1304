@@ -9,6 +9,7 @@ import * as moment from 'moment';
 })
 export class RestapiService {
 
+  message = "Welcome to Connect 4 Game"
   users = []
   TOKEN_KEY = 'token'
   path = "http://localhost:8082/";
