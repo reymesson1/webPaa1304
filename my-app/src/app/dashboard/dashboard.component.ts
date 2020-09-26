@@ -37,7 +37,13 @@ export class DashboardComponent implements OnInit {
 
     if(!this.restapi.isAuthenticated){
       this.openDialogLogin()
-    }    
+    }
+    
+    if(this.restapi.isAuthenticated){
+      this.openDialog()
+    }
+    
+  
 
   }
 

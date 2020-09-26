@@ -22,6 +22,8 @@ app.get('/gamerecap', columnController.getGameRecap);
 
 app.get('/historial', columnController.getHistorial);
 
+app.post('/setcounter', columnController.setMasterCounter);
+
 app.post('/column', columnController.setColumn);
 
 app.post('/register', userController.setRegister);

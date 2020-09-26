@@ -195,19 +195,6 @@ export class RestapiService {
 
     return this.http.get("http://localhost:8082/columns",
     {headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
-    // .subscribe(
-    //     (val) => {
-    //         console.log("POST call successful value returned in body",val[0].columns);
-    //         // this.columns = val[0];
-    //         this.columnsTwo = val[0].columns
-    //         // return val;
-    //      },
-    //     response => {
-    //       console.log("POST call in error", response.token);
-    //     },
-    //     () => {
-    //       console.log("The POST observable is now completed.");
-    // });
 
 
   }
@@ -221,6 +208,23 @@ export class RestapiService {
       "columns": columns,
       "status": "loss",
       "creator": this.token
+    },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+    .subscribe(
+        (val) => {
+            console.log("POST call successful value returned in body",val);
+         },
+        response => {
+          console.log("POST call in error", response.token);
+        },
+        () => {
+          console.log("The POST observable is now completed.");
+    });
+
+    //contador
+    this.http.post("http://localhost:8082/setcounter",
+    {
+      "id": "1",
+      "date": moment().format("YYYYMMDD")
     },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
     .subscribe(
         (val) => {

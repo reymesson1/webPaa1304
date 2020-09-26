@@ -9,7 +9,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "aws-deploy": "aws s3 sync dist/my-app/ s3://connect4-rey"
-
   },
   "private": true,
   "dependencies": {
@@ -29,7 +28,7 @@
     "express": "^4.17.1",
     "jwt-simple": "^0.5.6",
     "moment": "^2.29.0",
-    "mongoose": "^5.10.6",
+    "mongoose": "^5.10.7",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
