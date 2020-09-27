@@ -239,15 +239,31 @@ export class RestapiService {
 
   getRecapGame(){
 
-    return this.http.get("http://localhost:8082/gamerecap",
-    {headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+    // return this.http.get("http://localhost:8082/gamerecap",
+    // {headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+
+    return this.http.post("http://localhost:8082/gamerecap",
+    {
+      "id": "1",
+      "date": moment().format("YYYY MM DD"),
+      "token": this.token
+    },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+
 
   }
 
   getHistorial(){
 
-    return this.http.get("http://localhost:8082/historial",
-    {headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+    // return this.http.get("http://localhost:8082/historial",
+    // {headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+
+    return this.http.post("http://localhost:8082/historial",
+    {
+      "id": "1",
+      "date": moment().format("YYYY MM DD"),
+      "token": this.token
+    },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+
 
   }
 

@@ -1,4 +1,5 @@
 var Column = require('../models/column.js');
+var jwt = require('jwt-simple');
 
 exports.getColumn = async(req,res)=>{
 
@@ -10,9 +11,13 @@ exports.getColumn = async(req,res)=>{
 
 exports.setColumn = async(req,res)=>{
     
-    console.log(req.body);
+    var decode = jwt.decode(req.body.creator,'123');
+
+    var data = req.body;
+
+    data['creator'] = decode.sub;
     
-    var newColumn = req.body;
+    var newColumn = data;
     
     var column = new Column(newColumn);
     
@@ -29,16 +34,22 @@ exports.setColumn = async(req,res)=>{
 
 exports.getGameRecap = async(req,res)=>{
 
+    var userObj = req.body    
+    var decode = jwt.decode(req.body.token,'123')
+
     // > db.columns.aggregate([{"$group":{"_id":"$status","total":{"$sum":1}}}])
-    var master = await Column.aggregate([{"$group":{"_id":"$status","total":{"$sum":1}}},{"$sort":{"_id":-1}}])
+    var master = await Column.aggregate([{"$match":{"creator":decode.sub}},{"$group":{"_id":"$status","total":{"$sum":1}}},{"$sort":{"_id":-1}}])
     
     res.send(master);
 
 }
 
 exports.getHistorial = async(req,res)=>{
+    
+    var userObj = req.body    
+    var decode = jwt.decode(req.body.token,'123')
 
-    var column = await Column.find({"status":"win"})
+    var column = await Column.find({"creator":decode.sub})
     
     res.send(column);
 
