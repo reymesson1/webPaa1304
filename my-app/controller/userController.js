@@ -41,7 +41,7 @@ exports.setLogin = async(req,res)=>{
         
         var token = jwt.encode(payload, '123')
 
-        res.status(200).send({token})
+        res.status(200).send({token,"username":userData.username})
     })
 }
 exports.setResetPassword = async(req,res)=>{

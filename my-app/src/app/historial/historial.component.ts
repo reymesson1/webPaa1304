@@ -9,6 +9,7 @@ import { RestapiService } from 'src/app/restapi.service';
 export class HistorialComponent implements OnInit {
 
 
+  username: string = "";
   historial: any[] = [];
 
   constructor(public restapi : RestapiService) { }
@@ -21,6 +22,8 @@ export class HistorialComponent implements OnInit {
       console.log(data);
       this.historial = data    
     })    
+
+    this.username = localStorage.getItem("username")
  
   }
 

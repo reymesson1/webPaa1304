@@ -175,6 +175,7 @@ export class RestapiService {
         (val:any) => {
             console.log("POST call successful value returned in body",val);
             localStorage.setItem(this.TOKEN_KEY, val.token)
+            localStorage.setItem('username', val.username)
             if(this.isAuthenticated){
                 location.reload();
             }else{
