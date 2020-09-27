@@ -20,6 +20,10 @@ app.get('/columns', columnController.getColumn);
 
 app.post('/gamerecap', columnController.getGameRecap);
 
+app.get('/getcounter', columnController.getCounter);
+
+app.get('/setcounter', columnController.setCounter);
+
 app.post('/historial', columnController.getHistorial);
 
 app.post('/column', columnController.setColumn);

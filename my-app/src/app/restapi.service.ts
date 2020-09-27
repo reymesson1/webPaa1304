@@ -213,11 +213,11 @@ export class RestapiService {
 
   }
 
-  setMaster(columns : Column[]){
+  setMaster(columns : Column[],dataId){
 
     this.http.post("http://localhost:8082/column",
     {
-      "id": "1",
+      "id": dataId,
       "date": moment().format("YYYY MM DD"),
       "columns": columns,
       "status": "loss",
@@ -263,6 +263,48 @@ export class RestapiService {
       "date": moment().format("YYYY MM DD"),
       "token": this.token
     },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+
+
+  }
+
+  getCounter(){
+
+    return this.http.get("http://localhost:8082/getcounter",
+    {headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+    // .subscribe(
+    //     (val) => {
+    //         console.log("POST call successful value returned in body",val[0].columns);
+    //         // this.columns = val[0];
+    //         this.columnsTwo = val[0].columns
+    //         // return val;
+    //      },
+    //     response => {
+    //       console.log("POST call in error", response.token);
+    //     },
+    //     () => {
+    //       console.log("The POST observable is now completed.");
+    // });
+
+
+  }
+
+  setCounter(){
+
+    return this.http.get("http://localhost:8082/setcounter",
+    {headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+    // .subscribe(
+    //     (val) => {
+    //         console.log("POST call successful value returned in body",val[0].columns);
+    //         // this.columns = val[0];
+    //         this.columnsTwo = val[0].columns
+    //         // return val;
+    //      },
+    //     response => {
+    //       console.log("POST call in error", response.token);
+    //     },
+    //     () => {
+    //       console.log("The POST observable is now completed.");
+    // });
 
 
   }

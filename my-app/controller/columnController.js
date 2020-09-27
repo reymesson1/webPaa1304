@@ -1,4 +1,5 @@
 var Column = require('../models/column.js');
+var Counter = require('../models/counter.js');
 var jwt = require('jwt-simple');
 
 exports.getColumn = async(req,res)=>{
@@ -48,9 +49,29 @@ exports.getHistorial = async(req,res)=>{
     
     var userObj = req.body    
     var decode = jwt.decode(req.body.token,'123')
-
+    
     var column = await Column.find({"creator":decode.sub})
     
     res.send(column);
+    
+}
+        
+exports.getCounter = async(req,res)=>{
+
+    var counter = await Counter.find({"id":"1"})
+
+    res.send(counter)
+}
+
+exports.setCounter = async(req,res)=>{
+
+    var counter = await Counter.findOne({"id":"1"},function(err,c){
+        c.quantity += 1 
+        c.save(function(err,c){
+            console.log("Counter updated");
+        })        
+    });
+
+    res.send([{'message':'end'}]);
 
 }

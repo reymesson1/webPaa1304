@@ -19,8 +19,10 @@ export class DashboardComponent implements OnInit {
   animal: string; 
   name: string;
   temp : number = 0;
+  dataIn : number = 0;
   timeLeft: number = 60;
   interval;
+
 
 
   ngOnInit(): void { 
@@ -164,10 +166,22 @@ export class DashboardComponent implements OnInit {
       console.log('The dialog was closed');
       this.animal = result;
     });
+    
+//getcounter    
+    this.restapi.getCounter()
+    .subscribe((data:any) => data.map(dat=>{
+      // console.log(dat)
+      this.dataIn = dat.quantity
+      this.restapi.setMaster(this.columns,dat.quantity);
 
-    this.restapi.setMaster(this.columns);
+    }));
 
-    console.log(this.columns);
+    //setcounter
+    this.restapi.setCounter()
+    .subscribe((data:any) => data.map(dat=>{
+      console.log(dat)
+    }));
+    
   
 
   }
