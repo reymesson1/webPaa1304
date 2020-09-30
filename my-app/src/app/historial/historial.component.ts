@@ -24,6 +24,24 @@ export class HistorialComponent implements OnInit {
  
   }
 
+  loadHistory(id){
+
+    this.restapi.setColumnCustom(id)
+    .subscribe(
+        (data : any) => {
+          // this.historial = data   
+          data.map((dat:any)=>{
+            // console.log(dat.columns);
+        this.restapi.columns = dat.columns
+      })
+
+    })    
+
+
+    console.log(id);
+
+  }
+
 
 
 }

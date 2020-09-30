@@ -8,6 +8,15 @@ exports.getColumn = async(req,res)=>{
     
     res.send(column);
 }
+
+exports.getColumnCustom = async(req,res)=>{
+
+    var data = req.body;
+
+    var column = await Column.find({"id":data.id})
+    
+    res.send(column);
+}
   
 
 exports.setColumn = async(req,res)=>{

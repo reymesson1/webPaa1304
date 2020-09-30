@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DialogOverviewExampleDialog } from './dashboard/dialog-overview-example-dialog';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,18 @@ export class AppComponent {
   bool = false;
   audio = new Audio("https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_5MG.mp3");
   
+
+  constructor(public dialog: MatDialog) { }
   
+  openMenu(){
+
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '450px',
+      // data: {name: this.name, animal: this.animal}
+    });
+
+  }
+
   
   play(){
 

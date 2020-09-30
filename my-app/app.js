@@ -18,6 +18,8 @@ app.get('/logout', userController.getLogout);
 
 app.get('/columns', columnController.getColumn);
 
+app.post('/customcolumns', columnController.getColumnCustom);
+
 app.post('/gamerecap', columnController.getGameRecap);
 
 app.get('/getcounter', columnController.getCounter);

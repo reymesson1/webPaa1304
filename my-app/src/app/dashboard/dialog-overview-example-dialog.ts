@@ -31,15 +31,17 @@ export class DialogOverviewExampleDialog {
 
     reset(){
 
-        for(var x=0;x<this.restapi.tasks.length;x++){
+        for(var x=0;x<this.restapi.columns.length;x++){
+
+            for(var y=0;y<this.restapi.columns[x].rows.length;y++){
+                this.restapi.columns[x].rows[y].color = "gray";
+            }
             
-            this.restapi.tasks[x].color="gray";
         }
 
         this.restapi.player = false;
         
         this.dialogRef.close();
-
 
     }
 

@@ -309,6 +309,17 @@ export class RestapiService {
 
   }
 
+  setColumnCustom(id){
+
+    return this.http.post("http://localhost:8082/customcolumns",
+    {
+      "id": id,
+      "date": moment().format("YYYY MM DD"),
+      "token": this.token
+    },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+
+  }
+
 
 
 }
