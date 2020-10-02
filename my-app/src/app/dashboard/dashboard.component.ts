@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
   dataIn : number = 0;
   timeLeft: number = 60;
   interval;
+  cierto: boolean = false;
 
 
 
@@ -178,26 +179,12 @@ export class DashboardComponent implements OnInit {
 
       for(let y=0;y<4;y++){
         
-        console.log(this.columns[x].rows[y].color + " " + this.columns[x].rows[y+1].color + " " + this.columns[x].rows[y+2].color);
-        console.log(x + "-" + y + " " + parseInt(y+1) + " " + parseInt(y+2) );
         if(this.columns[x].rows[y+1].color=="blue"&&this.columns[x].rows[y+2].color=="blue"){
-
-          // return {
-          //   "cierto": true,
-          //   "posX": x,
-          //   "posY": y
-          // }
-          this.restapi.message = "Hay solo tres";
-          this.openDialog();
-        // }else{
-
-        //   return {
-        //     "cierto": false,
-        //     "posX": x,
-        //     "posY": y
-        // }
-
-
+          
+          setTimeout(() => {
+            
+            this.columns[x].rows[y-1].color="red";
+          }, 2000);
         }
 
       }
@@ -329,10 +316,17 @@ export class DashboardComponent implements OnInit {
             }, 1000);
           }else{
             
-          this.checkLocation(columnId,rowId);
-          this.checkAdjacentThree(columnId,rowId);
-          this.columns[columnId].rows[rowId].color="blue";
-          this.restapi.player = !this.restapi.player;
+
+            // if(this.cierto){
+              
+            //   console.log('ya si');
+            // }else{
+              // console.log('aun no');
+              this.checkLocation(columnId,rowId);
+              this.checkAdjacentThree(columnId,rowId);
+              this.columns[columnId].rows[rowId].color="blue";
+              this.restapi.player = !this.restapi.player;    
+            // }
 
           // console.log(this.checkAdjacentThree(columnId,rowId).cierto);
           // if(!this.checkAdjacentThree(columnId,rowId).cierto){
