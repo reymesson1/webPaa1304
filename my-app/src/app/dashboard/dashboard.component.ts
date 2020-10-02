@@ -67,7 +67,7 @@ export class DashboardComponent implements OnInit {
 
       for(let y=0;y<9;y++){
         
-        if(this.columns[y].rows[x].color=="red"&&this.columns[y+2].rows[x].color=="red"&&this.columns[y+3].rows[x].color=="red"){
+        if(this.columns[y].rows[x].color=="red"&&this.columns[y+1].rows[x].color=="red"&&this.columns[y+2].rows[x].color=="red"&&this.columns[y+3].rows[x].color=="red"){
 
           this.restapi.message = "Won Red";          
           this.openDialog();
@@ -81,7 +81,7 @@ export class DashboardComponent implements OnInit {
     // //vertical
     for(let x=0;x<12;x++){
 
-      for(let y=0;y<3;y++){
+      for(let y=0;y<4;y++){
         
         if(this.columns[x].rows[y].color=="red"&&this.columns[x].rows[y+1].color=="red"&&this.columns[x].rows[y+2].color=="red"&&this.columns[x].rows[y+3].color=="red"){
 
@@ -141,6 +141,117 @@ export class DashboardComponent implements OnInit {
           if(this.columns[x-1*-2].rows[y].color=="red"&&this.columns[x-1*-2+1].rows[y-1].color=="red"&&this.columns[x+3*-1+1].rows[y-2].color=="red"&&this.columns[x+4*-1+1].rows[y-3].color=="red"){
            
             this.restapi.message = "Won Red";
+            this.openDialog();
+          }
+
+        }
+  
+      }
+    }
+
+
+ 
+  }
+
+  checkAdjacentThree(columnId, rowId) : any{
+
+    // //horizontal by row
+    for(let x=0;x<6;x++){
+
+      for(let y=0;y<9;y++){
+        
+        if(this.columns[y+1].rows[x].color=="blue"&&this.columns[y+2].rows[x].color=="blue"){
+
+          this.restapi.message = "Hay solo tres";       
+          this.openDialog();
+        
+        }
+
+
+      }
+
+    }
+
+
+    // //vertical
+    for(let x=0;x<12;x++){
+
+      for(let y=0;y<4;y++){
+        
+        console.log(this.columns[x].rows[y].color + " " + this.columns[x].rows[y+1].color + " " + this.columns[x].rows[y+2].color);
+        console.log(x + "-" + y + " " + parseInt(y+1) + " " + parseInt(y+2) );
+        if(this.columns[x].rows[y+1].color=="blue"&&this.columns[x].rows[y+2].color=="blue"){
+
+          // return {
+          //   "cierto": true,
+          //   "posX": x,
+          //   "posY": y
+          // }
+          this.restapi.message = "Hay solo tres";
+          this.openDialog();
+        // }else{
+
+        //   return {
+        //     "cierto": false,
+        //     "posX": x,
+        //     "posY": y
+        // }
+
+
+        }
+
+      }
+    }
+
+    // //diagonal horizontal
+    //me queda pendiente 0-2 y 0-1 | 7-0 y 8-0    
+    for(let x=0;x<7;x++){
+      for(let y=0;y<3;y++){
+        if(y==0){          
+          if(this.columns[x].rows[y].color=="blue"&&this.columns[x+1].rows[y+1].color=="blue"&&this.columns[x+2].rows[y+2].color=="blue"){
+
+            this.restapi.message = "Hay solo tres";
+            this.openDialog();
+          }
+        }else if(y==1){          
+          if(this.columns[x+1].rows[y].color=="blue"&&this.columns[x+2].rows[y+1].color=="blue"&&this.columns[x+3].rows[y+2].color=="blue"){
+
+            this.restapi.message = "Hay solo tres";
+            this.openDialog();
+          }
+        }else if(y==2){          
+          if(this.columns[x+2].rows[y].color=="blue"&&this.columns[x+3].rows[y+1].color=="blue"&&this.columns[x+4].rows[y+2].color=="blue"){
+
+            this.restapi.message = "Hay solo tres";
+            this.openDialog();
+          }
+        }
+      }
+    }
+
+    // //diagonal vertical
+    for(let x=0;x<1;x++){
+      for(let y=5;y>=3;y--){
+
+        if(y==5){
+
+          if(this.columns[x].rows[y].color=="blue"&&this.columns[x+1].rows[y-1].color=="blue"&&this.columns[x+2].rows[y-2].color=="blue"){
+
+            this.restapi.message = "Hay solo tres";           
+            this.openDialog();
+          }
+        }else if(y==4){
+
+          if(this.columns[x-1*-1].rows[y].color=="blue"&&this.columns[x-2*-1].rows[y-1].color=="blue"&&this.columns[x-3*-1].rows[y-2].color=="blue"){
+
+           this.restapi.message = "Hay solo tres";
+            this.openDialog();
+          }
+        }else if(y==3){
+
+          if(this.columns[x-1*-2].rows[y].color=="blue"&&this.columns[x-1*-2+1].rows[y-1].color=="blue"&&this.columns[x+3*-1+1].rows[y-2].color=="blue"){
+           
+            this.restapi.message = "Hay solo tres";
             this.openDialog();
           }
 
@@ -219,8 +330,26 @@ export class DashboardComponent implements OnInit {
           }else{
             
           this.checkLocation(columnId,rowId);
+          this.checkAdjacentThree(columnId,rowId);
           this.columns[columnId].rows[rowId].color="blue";
           this.restapi.player = !this.restapi.player;
+
+          // console.log(this.checkAdjacentThree(columnId,rowId).cierto);
+          // if(!this.checkAdjacentThree(columnId,rowId).cierto){
+
+          //   this.checkLocation(columnId,rowId);
+          //   this.columns[columnId].rows[rowId].color="blue";
+          //   this.restapi.player = !this.restapi.player;
+          // }else{//le da prioridad al red
+            
+          //   var posX = this.checkAdjacentThree(columnId,rowId).posX;            
+          //   var posY = this.checkAdjacentThree(columnId,rowId).posY;            
+          //   this.checkLocation(posX,posY+1);
+          //   this.columns[columnId].rows[rowId].color="red";
+          //   this.restapi.player = !this.restapi.player;
+          // }
+
+
         }
     }//endfor
 
