@@ -204,15 +204,21 @@ export class DashboardComponent implements OnInit {
 
   onClick(columnId,rowId){
 
+    // debugger
+
     // console.log(columnId + " " + rowId)
+    console.log(Math.floor( Math.random() * 12 ) )
 
-    this.checkLocation(columnId,rowId);
+    var movement = Math.floor( Math.random() * 12 )
 
+    
     if(this.restapi.player){
-      this.columns[columnId].rows[rowId].color="red";
+      this.checkLocation(movement,rowId);
+      this.columns[movement].rows[rowId].color="red";
       this.restapi.player = !this.restapi.player;
     }else{
       
+      this.checkLocation(columnId,rowId);
       this.columns[columnId].rows[rowId].color="blue";
       this.restapi.player = !this.restapi.player;
     }
