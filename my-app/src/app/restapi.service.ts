@@ -12,7 +12,8 @@ export class RestapiService {
   message = "Welcome to Connect 4 Game"
   users = []
   TOKEN_KEY = 'token'
-  path = "http://localhost:8082/";
+  // path = "http://localhost:8082/";
+  path = "http://167.172.143.106:8082/";
   
   authPath = this.path + '/login';
 
@@ -124,7 +125,8 @@ export class RestapiService {
 
   sendUserRegistration(loginData) { 
 
-    this.http.post("http://localhost:8082/register",
+    // this.http.post("http://localhost:8082/register",
+    this.http.post("http://167.172.143.106:8082/register",
     {
       "id": "1",
       "username": loginData.value.username,
@@ -165,7 +167,8 @@ export class RestapiService {
 
   loginUser(loginData) {
 
-    this.http.post("http://localhost:8082/login",
+    // this.http.post("http://localhost:8082/login",
+    this.http.post("http://167.172.143.106:8082/login",
     {
       "id": "1",
       "username": loginData.value.username,
@@ -194,7 +197,8 @@ export class RestapiService {
 
   getMaster(){
 
-    return this.http.get("http://localhost:8082/columns",
+    // return this.http.get("http://localhost:8082/columns",
+    return this.http.get("http://167.172.143.106:8082/columns",
     {headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
     // .subscribe(
     //     (val) => {
@@ -215,7 +219,8 @@ export class RestapiService {
 
   setMaster(columns : Column[],dataId){
 
-    this.http.post("http://localhost:8082/column",
+    // this.http.post("http://localhost:8082/column",
+    this.http.post("http://167.172.143.106:8082/column",
     {
       "id": dataId,
       "date": moment().format("YYYY MM DD"),
@@ -242,7 +247,8 @@ export class RestapiService {
     // return this.http.get("http://localhost:8082/gamerecap",
     // {headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
 
-    return this.http.post("http://localhost:8082/gamerecap",
+    // return this.http.post("http://localhost:8082/gamerecap",
+    return this.http.post("http://167.172.143.106:8082/gamerecap",
     {
       "id": "1",
       "date": moment().format("YYYY MM DD"),
@@ -257,7 +263,8 @@ export class RestapiService {
     // return this.http.get("http://localhost:8082/historial",
     // {headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
 
-    return this.http.post("http://localhost:8082/historial",
+    // return this.http.post("http://localhost:8082/historial",
+    return this.http.post("http://167.172.143.106:8082/historial",
     {
       "id": "1",
       "date": moment().format("YYYY MM DD"),
@@ -269,7 +276,8 @@ export class RestapiService {
 
   getCounter(){
 
-    return this.http.get("http://localhost:8082/getcounter",
+    // return this.http.get("http://localhost:8082/getcounter",
+    return this.http.get("http://167.172.143.106:8082/getcounter",
     {headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
     // .subscribe(
     //     (val) => {
@@ -290,7 +298,8 @@ export class RestapiService {
 
   setCounter(){
 
-    return this.http.get("http://localhost:8082/setcounter",
+    // return this.http.get("http://localhost:8082/setcounter",
+    return this.http.get("http://167.172.143.106:8082/setcounter",
     {headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
     // .subscribe(
     //     (val) => {
@@ -311,7 +320,8 @@ export class RestapiService {
 
   setColumnCustom(id){
 
-    return this.http.post("http://localhost:8082/customcolumns",
+    // return this.http.post("http://localhost:8082/customcolumns",
+    return this.http.post("http://167.172.143.106:8082/customcolumns",
     {
       "id": id,
       "date": moment().format("YYYY MM DD"),
