@@ -68,7 +68,7 @@ export class DashboardComponent implements OnInit {
 
       for(let y=0;y<9;y++){
         
-        if(this.columns[y].rows[x].color=="red"&&this.columns[y+1].rows[x].color=="red"&&this.columns[y+2].rows[x].color=="red"&&this.columns[y+3].rows[x].color=="red"){
+        if(this.columns[y].rows[x].color=="red"&&this.columns[y+1].rows[x].color=="blue"&&this.columns[y+2].rows[x].color=="blue"&&this.columns[y+3].rows[x].color=="blue"){
 
           this.restapi.message = "Won Red";          
           this.openDialog();
@@ -161,13 +161,13 @@ export class DashboardComponent implements OnInit {
 
       for(let y=0;y<9;y++){
         
-        if(this.columns[y+1].rows[x].color=="blue"&&this.columns[y+2].rows[x].color=="blue"){
+        if(this.columns[y].rows[x].color=="blue"&&this.columns[y+1].rows[x].color=="blue"){
 
-          this.restapi.message = "Hay solo tres";       
-          this.openDialog();
-        
+          setTimeout(() => {
+            
+            this.columns[y+3].rows[x].color="red";
+          }, 2000);
         }
-
 
       }
 
