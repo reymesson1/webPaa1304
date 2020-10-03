@@ -25,6 +25,7 @@ export class DashboardComponent implements OnInit {
   cierto: boolean = false;
   time: number = 0;
   play : boolean = false;
+  dialogRef
 
 
 
@@ -85,8 +86,15 @@ export class DashboardComponent implements OnInit {
     if(this.restapi.historyActive){
 
       console.log('active history from restapi');
+  
+      this.dialogRef.close('Pizza!');
+
+      
 
       this.restapi.historyActive = false;
+
+
+
     }
 
     this.cdr.detectChanges();
@@ -306,14 +314,14 @@ export class DashboardComponent implements OnInit {
 
   openDialog(): void {
 
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+    this.dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '450px',
       data: {name: this.name, animal: this.animal}
     });
 
-    dialogRef.disableClose = true;
+    this.dialogRef.disableClose = true;
 
-    dialogRef.afterClosed().subscribe(result => {
+    this.dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.animal = result;
     });
