@@ -22,6 +22,8 @@ export class RestapiService {
 
   isStarted : boolean = false;
 
+  isStartedComp : boolean = false;
+
   player: boolean = false;//blue
 
   columnsTwo: Column[] = [];

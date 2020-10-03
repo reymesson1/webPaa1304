@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
 import { RestapiService, Task } from '../restapi.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
@@ -11,9 +11,18 @@ export class DialogOverviewExampleDialog {
     message : string;
     isScore : boolean = false;
     actualId : number = 0;
+    isStarted : boolean = false;
 
-    constructor(private restapi : RestapiService,public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,@Inject(MAT_DIALOG_DATA) public data: DialogData) 
+    constructor(private cdr: ChangeDetectorRef, private restapi : RestapiService,public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,@Inject(MAT_DIALOG_DATA) public data: DialogData) 
     {}
+
+    ngAfterViewChecked(){
+
+        this.isStarted = this.restapi.isStartedComp;
+
+        this.cdr.detectChanges();
+
+    }
 
     ngOnInit(): void { 
     
@@ -36,6 +45,7 @@ export class DialogOverviewExampleDialog {
         });
 
     }
+
     
     viewScore(){
 
@@ -53,7 +63,7 @@ export class DialogOverviewExampleDialog {
 
         this.restapi.setMaster(this.restapi.columns, this.actualId);
 
-        this.restapi.isStarted = true;
+        this.restapi.isStartedComp = true;
 
         for(var x=0;x<(<any>this.restapi.columns).length;x++){
 

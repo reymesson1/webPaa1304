@@ -9,7 +9,7 @@
             <button mat-button color="primary" (click)="reset()" >Play again</button>
     </div>
     <div class="col-md-4">
-            <button mat-button color="primary" (click)="saveState()" >Save State</button>
+            <button  [disabled]="!isStarted" mat-button color="primary" (click)="saveState()" >Save State</button>
     </div>
 </div>
 <div class="row" *ngIf="isScore" >
