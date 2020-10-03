@@ -12,10 +12,7 @@ import { UserComponent } from '../user/user.component';
 })
 export class DashboardComponent implements OnInit {
  
-  constructor(private restapi : RestapiService, public dialog: MatDialog, private cdr: ChangeDetectorRef) { 
-
-
-  }
+  constructor(private restapi : RestapiService, public dialog: MatDialog, private cdr: ChangeDetectorRef) {}
 
   users: Task[] = [];
   columns: Column[] = [];
@@ -62,6 +59,43 @@ export class DashboardComponent implements OnInit {
       this.timeLeft = 60;
       this.restapi.isStarted = false;
     }
+
+    if(this.restapi.muestrameTablero){
+
+      console.log(this.columns);
+      console.log(this.restapi.actualId)
+
+      this.restapi.updateColumns(this.restapi.actualId,this.columns)
+      .subscribe(
+          (data : any) => {
+            // this.historial = data   
+            data.map((dat:any)=>{
+              console.log(dat);
+          // this.restapi.columns = dat.columns
+        })
+  
+      })    
+  
+
+      // for(var x=0;x<this.columns.length;x++){
+
+      //   for(var y=0;y<this.columns[x].rows.length;y++){
+
+      //     if(this.columns[x].rows[y].color=='red'){
+           
+      //       console.log('si')
+      //     }
+
+      //   }
+        
+      // }
+
+      this.restapi.muestrameTablero = false;
+      
+
+
+    }
+
     this.cdr.detectChanges();
 
   }
@@ -81,6 +115,9 @@ export class DashboardComponent implements OnInit {
   pauseTimer() {
     this.play = false;
     clearInterval(this.interval);
+    // setTimeout(() => {
+    //   window.location.reload();
+    // }, 2000);
   }
 
 

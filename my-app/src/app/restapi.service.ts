@@ -9,6 +9,8 @@ import * as moment from 'moment';
 })
 export class RestapiService {
 
+  actualId : number = 0;
+  muestrameTablero : boolean = false;
   message = "Welcome to Connect 4 Game";
   users = [];
   TOKEN_KEY = 'token'
@@ -309,6 +311,18 @@ export class RestapiService {
       "id": id,
       "date": moment().format("YYYY MM DD"),
       "token": this.token
+    },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+
+  }
+
+  updateColumns(id,columns){
+
+    // return this.http.post("http://localhost:8082/customcolumns",
+    return this.http.post("http://167.172.143.106:8082/updatecolumns",
+    {
+      "id": id,
+      "date": moment().format("YYYY MM DD"),
+      "columns": columns
     },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
 
   }

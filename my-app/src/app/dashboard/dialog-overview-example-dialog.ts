@@ -44,7 +44,9 @@ export class DialogOverviewExampleDialog {
 
     saveState(){
 
-        console.log('saveState ' + this.actualId);
+        this.restapi.actualId = this.actualId;
+        // console.log('saveState ' + this.actualId);
+        this.restapi.muestrameTablero = true;
     }
 
     reset(){
