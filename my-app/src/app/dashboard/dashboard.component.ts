@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { RestapiService, Task, Column } from '../restapi.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogOverviewExampleDialog } from './dialog-overview-example-dialog';
@@ -12,7 +12,7 @@ import { UserComponent } from '../user/user.component';
 })
 export class DashboardComponent implements OnInit {
  
-  constructor(private restapi : RestapiService, public dialog: MatDialog) { }
+  constructor(private restapi : RestapiService, public dialog: MatDialog, private cdr: ChangeDetectorRef) { }
 
   users: Task[] = [];
   columns: Column[] = [];
@@ -23,6 +23,8 @@ export class DashboardComponent implements OnInit {
   timeLeft: number = 60;
   interval;
   cierto: boolean = false;
+  time: number = 0;
+  play : boolean = false;
 
 
 
@@ -46,20 +48,38 @@ export class DashboardComponent implements OnInit {
       this.openDialog()
     }    
 
+    
+  }
+  
+  ngAfterViewChecked(){
+    
+    if(this.restapi.isStarted){
+      
+      this.startTimer();
+      this.timeLeft = 60;
+      this.restapi.isStarted = false;
+    }
+    this.cdr.detectChanges();
+
   }
 
   startTimer() {
+    this.play = true;
     this.interval = setInterval(() => {
-      if(this.timeLeft > 0) {
-        this.timeLeft--;
-        if(this.timeLeft==0){
-          alert('Test')
-        }
-      } else {
-        this.timeLeft = 60;
+      this.time++;
+      if(this.time==60){
+          this.restapi.message = "Timeout";
+          this.openDialog();
+          this.pauseTimer();
       }
     },1000)
   }
+  
+  pauseTimer() {
+    this.play = false;
+    clearInterval(this.interval);
+  }
+
 
   checkAdjacent(columnId, rowId){
 
@@ -68,7 +88,7 @@ export class DashboardComponent implements OnInit {
 
       for(let y=0;y<9;y++){
         
-        if(this.columns[y].rows[x].color=="red"&&this.columns[y+1].rows[x].color=="blue"&&this.columns[y+2].rows[x].color=="blue"&&this.columns[y+3].rows[x].color=="blue"){
+        if(this.columns[y].rows[x].color=="red"&&this.columns[y+1].rows[x].color=="red"&&this.columns[y+2].rows[x].color=="red"&&this.columns[y+3].rows[x].color=="red"){
 
           this.restapi.message = "Won Red";          
           this.openDialog();
@@ -301,6 +321,13 @@ export class DashboardComponent implements OnInit {
 
 
   onClick(columnId,rowId){
+
+    if(!this.restapi.isStarted){
+      
+      this.pauseTimer();
+      this.time = 0;
+      this.startTimer();
+    }
 
     for(var x=0;x<2;x++){
         

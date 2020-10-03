@@ -36,6 +36,8 @@ export class DialogOverviewExampleDialog {
 
     reset(){
 
+        this.restapi.isStarted = true;
+
         for(var x=0;x<(<any>this.restapi.columns).length;x++){
 
             for(var y=0;y<(<any>this.restapi.columns[x].rows).length;y++){

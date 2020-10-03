@@ -17,6 +17,8 @@ export class RestapiService {
   
   authPath = this.path + '/login';
 
+  isStarted : boolean = false;
+
 
   player: boolean = false;//blue
 
