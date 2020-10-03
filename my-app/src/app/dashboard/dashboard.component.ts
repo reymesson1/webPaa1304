@@ -65,7 +65,7 @@ export class DashboardComponent implements OnInit {
       console.log(this.columns);
       console.log(this.restapi.actualId)
 
-      this.restapi.updateColumns(this.restapi.actualId,this.columns)
+      this.restapi.updateColumns(this.restapi.actualId-1,this.columns)
       .subscribe(
           (data : any) => {
             // this.historial = data   
