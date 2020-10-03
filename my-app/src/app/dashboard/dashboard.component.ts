@@ -152,6 +152,22 @@ export class DashboardComponent implements OnInit {
 
     }
 
+    // //horizontal by row azul
+    for(let x=0;x<6;x++){
+
+      for(let y=0;y<9;y++){
+        
+        if(this.columns[y].rows[x].color=="blue"&&this.columns[y+1].rows[x].color=="blue"&&this.columns[y+2].rows[x].color=="blue"&&this.columns[y+3].rows[x].color=="blue"){
+
+          this.restapi.message = "Won blue";          
+          this.restapi.status = "win";
+          this.openDialog();
+        }
+
+      }
+
+    }
+
 
     // //vertical
     for(let x=0;x<12;x++){
@@ -161,6 +177,21 @@ export class DashboardComponent implements OnInit {
         if(this.columns[x].rows[y].color=="red"&&this.columns[x].rows[y+1].color=="red"&&this.columns[x].rows[y+2].color=="red"&&this.columns[x].rows[y+3].color=="red"){
 
           this.restapi.message = "Won Red";
+          this.openDialog();
+        }
+
+      }
+    }
+
+    // //vertical blue
+    for(let x=0;x<12;x++){
+
+      for(let y=0;y<4;y++){
+        
+        if(this.columns[x].rows[y].color=="blue"&&this.columns[x].rows[y+1].color=="blue"&&this.columns[x].rows[y+2].color=="blue"&&this.columns[x].rows[y+3].color=="blue"){
+
+          this.restapi.message = "Won blue";
+          this.restapi.status = "win";
           this.openDialog();
         }
 
@@ -193,6 +224,35 @@ export class DashboardComponent implements OnInit {
       }
     }
 
+    // //diagonal horizontal AZUL
+    //me queda pendiente 0-2 y 0-1 | 7-0 y 8-0    
+    for(let x=0;x<7;x++){
+      for(let y=0;y<3;y++){
+        if(y==0){          
+          if(this.columns[x].rows[y].color=="blue"&&this.columns[x+1].rows[y+1].color=="blue"&&this.columns[x+2].rows[y+2].color=="blue"&&this.columns[x+3].rows[y+3].color=="blue"){
+
+            this.restapi.message = "Won blue";
+            this.restapi.status = "win";
+            this.openDialog();
+          }
+        }else if(y==1){          
+          if(this.columns[x+1].rows[y].color=="blue"&&this.columns[x+2].rows[y+1].color=="blue"&&this.columns[x+3].rows[y+2].color=="blue"&&this.columns[x+4].rows[y+3].color=="blue"){
+
+            this.restapi.message = "Won blue";
+            this.restapi.status = "win";
+            this.openDialog();
+          }
+        }else if(y==2){          
+          if(this.columns[x+2].rows[y].color=="blue"&&this.columns[x+3].rows[y+1].color=="blue"&&this.columns[x+4].rows[y+2].color=="blue"&&this.columns[x+5].rows[y+3].color=="blue"){
+
+            this.restapi.message = "Won blue";
+            this.restapi.status = "win";
+            this.openDialog();
+          }
+        }
+      }
+    }
+
     // //diagonal vertical
     for(let x=0;x<1;x++){
       for(let y=5;y>=3;y--){
@@ -216,6 +276,40 @@ export class DashboardComponent implements OnInit {
           if(this.columns[x-1*-2].rows[y].color=="red"&&this.columns[x-1*-2+1].rows[y-1].color=="red"&&this.columns[x+3*-1+1].rows[y-2].color=="red"&&this.columns[x+4*-1+1].rows[y-3].color=="red"){
            
             this.restapi.message = "Won Red";
+            this.openDialog();
+          }
+
+        }
+  
+      }
+    }
+
+    // //diagonal vertical AZUL
+    for(let x=0;x<1;x++){
+      for(let y=5;y>=3;y--){
+
+        if(y==5){
+
+          if(this.columns[x].rows[y].color=="blue"&&this.columns[x+1].rows[y-1].color=="blue"&&this.columns[x+2].rows[y-2].color=="blue"&&this.columns[x+3].rows[y-3].color=="blue"){
+
+            this.restapi.message = "Won blue";      
+            this.restapi.status = "win";     
+            this.openDialog();
+          }
+        }else if(y==4){
+
+          if(this.columns[x-1*-1].rows[y].color=="blue"&&this.columns[x-2*-1].rows[y-1].color=="blue"&&this.columns[x-3*-1].rows[y-2].color=="blue"&&this.columns[x-4*-1].rows[y-3].color=="blue"){
+
+           this.restapi.message = "Won blue";
+           this.restapi.status = "win";
+            this.openDialog();
+          }
+        }else if(y==3){
+
+          if(this.columns[x-1*-2].rows[y].color=="blue"&&this.columns[x-1*-2+1].rows[y-1].color=="blue"&&this.columns[x+3*-1+1].rows[y-2].color=="blue"&&this.columns[x+4*-1+1].rows[y-3].color=="blue"){
+           
+            this.restapi.message = "Won blue";
+            this.restapi.status = "win";
             this.openDialog();
           }
 
