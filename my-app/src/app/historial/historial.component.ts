@@ -31,8 +31,8 @@ export class HistorialComponent implements OnInit {
         (data : any) => {
           // this.historial = data   
           data.map((dat:any)=>{
-            // console.log(dat.columns);
-        this.restapi.columns = dat.columns
+            console.log(dat.columns);
+        // this.restapi.columns = dat.columns
       })
 
     })    

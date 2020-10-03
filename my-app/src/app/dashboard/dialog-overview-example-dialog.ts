@@ -51,12 +51,7 @@ export class DialogOverviewExampleDialog {
 
     reset(){
 
-        // setcounter
-        this.restapi.setCounter()
-        .subscribe((data:any) => data.map(dat=>{
-        console.log(dat)
-        }));
-
+        this.restapi.setMaster(this.restapi.columns, this.actualId);
 
         this.restapi.isStarted = true;
 
@@ -69,6 +64,13 @@ export class DialogOverviewExampleDialog {
         }
 
         this.restapi.player = false;
+
+        // setcounter
+        this.restapi.setCounter()
+        .subscribe((data:any) => data.map(dat=>{
+        console.log(dat)
+        }));
+
         
         this.dialogRef.close();
 

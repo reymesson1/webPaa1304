@@ -331,7 +331,7 @@ export class DashboardComponent implements OnInit {
     .subscribe((data:any) => data.map(dat=>{
       // console.log(dat)
       this.dataIn = dat.quantity
-      this.restapi.setMaster(this.columns,dat.quantity);
+      // this.restapi.setMaster(this.columns,dat.quantity);
 
     }));
    
