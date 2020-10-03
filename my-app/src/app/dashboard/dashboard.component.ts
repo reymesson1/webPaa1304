@@ -12,7 +12,10 @@ import { UserComponent } from '../user/user.component';
 })
 export class DashboardComponent implements OnInit {
  
-  constructor(private restapi : RestapiService, public dialog: MatDialog, private cdr: ChangeDetectorRef) { }
+  constructor(private restapi : RestapiService, public dialog: MatDialog, private cdr: ChangeDetectorRef) { 
+
+
+  }
 
   users: Task[] = [];
   columns: Column[] = [];
@@ -273,12 +276,12 @@ export class DashboardComponent implements OnInit {
 
   openDialog(): void {
 
-    // this.restapi.message = "Won Red";
-
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '450px',
       data: {name: this.name, animal: this.animal}
     });
+
+    dialogRef.disableClose = true;
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
@@ -310,6 +313,9 @@ export class DashboardComponent implements OnInit {
       width: '450px',
       data: {name: this.name, animal: this.animal,'test':'test'}
     });
+
+    dialogRef.disableClose = true;
+
 
     // dialogRef.afterClosed().subscribe(result => {
     //   console.log('The dialog was closed');
