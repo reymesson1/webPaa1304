@@ -85,9 +85,22 @@ export class DashboardComponent implements OnInit {
 
     if(this.restapi.historyActive){
 
-      console.log('active history from restapi');
+
+      this.restapi.setColumnCustom(this.restapi.actualId)
+      .subscribe(
+          (data : any) => {
+            // this.historial = data   
+            data.map((dat:any)=>{
+              // console.log(dat.columns);
+           this.columns = dat.columns
+        })
   
+      })      
+
+
       this.dialogRef.close('Pizza!');
+
+
 
       
 
