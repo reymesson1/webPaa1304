@@ -14,7 +14,7 @@
                 <tbody *ngFor="let history of historial; let i = index" >
                     <tr> 
                         <td (click)="loadHistory(history.id)" >{{history.date}}</td>
-                        <td>{{'reymesson'}}</td> 
+                        <td>{{username}}</td> 
                         <td>{{history.status}}</td>
                     </tr>
                 </tbody>

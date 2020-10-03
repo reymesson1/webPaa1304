@@ -8,12 +8,14 @@ import { RestapiService } from 'src/app/restapi.service';
 })
 export class HistorialComponent implements OnInit {
 
-
+  username : string = "";
   historial: any[] = [];
 
   constructor(public restapi : RestapiService) { }
 
   ngOnInit(): void { 
+    
+    this.username = localStorage.getItem('username');
 
     this.restapi.getHistorial()
     .subscribe(
@@ -21,7 +23,7 @@ export class HistorialComponent implements OnInit {
       // console.log(data);
       this.historial = data    
     })    
- 
+    
   }
 
   loadHistory(id){

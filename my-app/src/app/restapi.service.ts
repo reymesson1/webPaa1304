@@ -9,6 +9,8 @@ import * as moment from 'moment';
 })
 export class RestapiService {
 
+  username : string = ""
+  status : string = "loss"
   historyActive : boolean = false;
   actualId : number = 0;
   muestrameTablero : boolean = false;
@@ -173,6 +175,10 @@ export class RestapiService {
 
   loginUser(loginData) {
 
+    this.username = loginData.value.username;
+
+    localStorage.setItem('username', this.username);
+
     // this.http.post("http://localhost:8082/login",
     return this.http.post("http://167.172.143.106:8082/login",
     {
@@ -213,7 +219,7 @@ export class RestapiService {
       "id": dataId,
       "date": moment().format("YYYY MM DD"),
       "columns": columns,
-      "status": "loss",
+      "status": this.status,
       "creator": this.token
     },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
     .subscribe(
