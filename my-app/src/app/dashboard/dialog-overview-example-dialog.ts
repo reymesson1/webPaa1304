@@ -10,6 +10,7 @@ export class DialogOverviewExampleDialog {
 
     message : string;
     isScore : boolean = false;
+    actualId : number = 0;
 
     constructor(private restapi : RestapiService,public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,@Inject(MAT_DIALOG_DATA) public data: DialogData) 
     {}
@@ -17,13 +18,25 @@ export class DialogOverviewExampleDialog {
     ngOnInit(): void { 
     
         this.message = this.restapi.message;
+        this.restapi.getCounter()
+        .subscribe(
+            (val:any) => {
+                console.log("POST call successful value returned in body",val);
+                val.map((data:any)=>{
+                    console.log(data.quantity)
+                    this.actualId = data.quantity;
+                })
+                // console.log(val.quantity)
+            },
+            response => {
+            console.log("POST call in error", response.token);
+            },
+            () => {
+            console.log("The POST observable is now completed.");
+        });
+
     }
     
-
-    onNoClick(): void {
-        // this.dialogRef.close();
-    }
-
     viewScore(){
 
         this.isScore = !this.isScore;
@@ -31,10 +44,11 @@ export class DialogOverviewExampleDialog {
 
     saveState(){
 
-        console.log('saveState');
+        console.log('saveState ' + this.actualId);
     }
 
     reset(){
+
 
         this.restapi.isStarted = true;
 
