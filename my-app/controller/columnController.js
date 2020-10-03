@@ -87,13 +87,17 @@ exports.setCounter = async(req,res)=>{
 
 exports.updateColumns = async(req,res)=>{
 
-    var column = await Column.findOne({"id":req.body.id}, function(err,c){
-        c.columns = req.body.columns
-        c.save(function(err,c){
-            console.log("Column updated");
-        })        
+    var column = await Column.find({"id":req.body.id})
 
-    })
+    console.log(column)
+
+    // var column = await Column.findOne({"id":req.body.id}, function(err,c){
+    //     c.columns = req.body.columns
+    //     c.save(function(err,c){
+    //         console.log("Column updated");
+    //     })        
+
+    // })
 
     res.send([{'message':'end update'}]);
 
