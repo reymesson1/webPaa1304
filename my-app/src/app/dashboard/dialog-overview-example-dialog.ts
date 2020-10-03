@@ -45,11 +45,17 @@ export class DialogOverviewExampleDialog {
     saveState(){
 
         this.restapi.actualId = this.actualId;
-        // console.log('saveState ' + this.actualId);
+        console.log('saveState ' + this.actualId);
         this.restapi.muestrameTablero = true;
     }
 
     reset(){
+
+        // setcounter
+        this.restapi.setCounter()
+        .subscribe((data:any) => data.map(dat=>{
+        console.log(dat)
+        }));
 
 
         this.restapi.isStarted = true;

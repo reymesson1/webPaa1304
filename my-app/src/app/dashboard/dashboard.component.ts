@@ -62,8 +62,7 @@ export class DashboardComponent implements OnInit {
 
     if(this.restapi.muestrameTablero){
 
-      console.log(this.columns);
-      console.log(this.restapi.actualId)
+
 
       this.restapi.updateColumns(this.restapi.actualId-1,this.columns)
       .subscribe(
@@ -77,23 +76,17 @@ export class DashboardComponent implements OnInit {
       })    
   
 
-      // for(var x=0;x<this.columns.length;x++){
-
-      //   for(var y=0;y<this.columns[x].rows.length;y++){
-
-      //     if(this.columns[x].rows[y].color=='red'){
-           
-      //       console.log('si')
-      //     }
-
-      //   }
-        
-      // }
-
       this.restapi.muestrameTablero = false;
       
 
 
+    }
+
+    if(this.restapi.historyActive){
+
+      console.log('active history from restapi');
+
+      this.restapi.historyActive = false;
     }
 
     this.cdr.detectChanges();
@@ -333,13 +326,7 @@ export class DashboardComponent implements OnInit {
       this.restapi.setMaster(this.columns,dat.quantity);
 
     }));
-
-    //setcounter
-    this.restapi.setCounter()
-    .subscribe((data:any) => data.map(dat=>{
-      console.log(dat)
-    }));
-    
+   
   
 
   }

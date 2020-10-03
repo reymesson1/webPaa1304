@@ -9,6 +9,7 @@ import * as moment from 'moment';
 })
 export class RestapiService {
 
+  historyActive : boolean = false;
   actualId : number = 0;
   muestrameTablero : boolean = false;
   message = "Welcome to Connect 4 Game";

@@ -37,6 +37,8 @@ export class HistorialComponent implements OnInit {
 
     })    
 
+    this.restapi.historyActive = true;
+
 
     console.log(id);
 
