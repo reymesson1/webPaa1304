@@ -9,8 +9,8 @@ import * as moment from 'moment';
 })
 export class RestapiService {
 
-  message = "Welcome to Connect 4 Game"
-  users = []
+  message = "Welcome to Connect 4 Game";
+  users = [];
   TOKEN_KEY = 'token'
   // path = "http://localhost:8082/";
   path = "http://167.172.143.106:8082/";
@@ -18,7 +18,6 @@ export class RestapiService {
   authPath = this.path + '/login';
 
   isStarted : boolean = false;
-
 
   player: boolean = false;//blue
 
@@ -170,30 +169,12 @@ export class RestapiService {
   loginUser(loginData) {
 
     // this.http.post("http://localhost:8082/login",
-    this.http.post("http://167.172.143.106:8082/login",
+    return this.http.post("http://167.172.143.106:8082/login",
     {
       "id": "1",
       "username": loginData.value.username,
       "password": loginData.value.password
     },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
-    .subscribe(
-        (val:any) => {
-            console.log("POST call successful value returned in body",val);
-            localStorage.setItem(this.TOKEN_KEY, val.token)
-            if(this.isAuthenticated){
-                location.reload();
-            }else{
-                console.log("Registration Failed")
-            }   
-
-         },
-        response => {
-          console.log("POST call in error", response.token);
-
-        },
-        () => {
-          console.log("The POST observable is now completed.");
-    }); 
 
   };
 

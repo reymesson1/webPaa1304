@@ -24,8 +24,8 @@
                 <div class="row">
                     <button type="submit" mat-raised-button>Enter</button>
                 </div>
-                <div class="row" *ngIf="animal">
-                    You chose: <i>{{animal}}</i>
+                <div class="row" *ngIf="wrong">
+                    <i style="color:red">{{'Your password is wrong!'}}</i>
                 </div>
             </form>
         </div>
