@@ -101,13 +101,16 @@ exports.updateColumns = async(req,res)=>{
 
 exports.updateIsActive = async(req,res)=>{
 
-    var column = await Column.findOne({"id":req.body.id-1}, function(err,c){
-        c.isActive = req.body.isActive
-        c.save(function(err,c){
-            console.log("isActive updated");
-        })        
+    var column = await Column.find({"id":req.body.id});
+   
+    console.log(column);
+    // var column = await Column.findOne({"id":req.body.id-1}, function(err,c){
+    //     c.isActive = req.body.isActive
+    //     c.save(function(err,c){
+    //         console.log("isActive updated");
+    //     })        
 
-    })
+    // })
 
     res.send([{'message':'end update'}]);
 

@@ -49,6 +49,9 @@ export class DialogOverviewExampleDialog {
     
     viewScore(){
 
+        this.restapi.updateIsActive(this.restapi.actualId,false);
+
+
         this.isScore = !this.isScore;
     }
 
