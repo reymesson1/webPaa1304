@@ -5,6 +5,7 @@ var columnSchema = new mongoose.Schema({
     date: String,
     columns: Array,
     status: String,
+    isActive: String,
     creator: String
 })
 
