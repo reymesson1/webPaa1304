@@ -222,7 +222,7 @@ export class RestapiService {
       "date": moment().format("YYYY MM DD"),
       "columns": columns,
       "status": this.status,
-      "isActive": "true",
+      "isActive": true,
       "creator": this.token
     },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
     .subscribe(
