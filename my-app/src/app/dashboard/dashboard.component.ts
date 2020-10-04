@@ -4,6 +4,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { DialogOverviewExampleDialog } from './dialog-overview-example-dialog';
 import { LoginComponent } from '../login/login.component';
 import { UserComponent } from '../user/user.component';
+import { LoadingComponent } from '../loading/loading.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -347,8 +348,6 @@ export class DashboardComponent implements OnInit {
       // this.restapi.setMaster(this.columns,dat.quantity);
 
     }));
-   
-  
 
   }
 
@@ -370,8 +369,24 @@ export class DashboardComponent implements OnInit {
 
   }
 
+  openDialogLoading(){
+
+    
+    // width: '150px',height: '110px',
+    const dialogRef = this.dialog.open(LoadingComponent, {
+      width: '150px',height: '110px',
+      data: {name: this.name, animal: this.animal,'test':'test'}
+    });
+
+    dialogRef.disableClose = true;
+
+
+  }
+
 
   onClick(columnId,rowId){
+
+    this.openDialogLoading();
 
     if(!this.restapi.isStarted){
       
@@ -391,35 +406,13 @@ export class DashboardComponent implements OnInit {
               this.checkLocation(movement,rowId);
               this.columns[movement].rows[rowId].color="red";
               this.restapi.player = !this.restapi.player;
-            }, 1000);
+            }, 5000);
           }else{
             
-
-            // if(this.cierto){
-              
-            //   console.log('ya si');
-            // }else{
-              // console.log('aun no');
               this.checkLocation(columnId,rowId);
               this.checkAdjacentThree(columnId,rowId);
               this.columns[columnId].rows[rowId].color="blue";
               this.restapi.player = !this.restapi.player;    
-            // }
-
-          // console.log(this.checkAdjacentThree(columnId,rowId).cierto);
-          // if(!this.checkAdjacentThree(columnId,rowId).cierto){
-
-          //   this.checkLocation(columnId,rowId);
-          //   this.columns[columnId].rows[rowId].color="blue";
-          //   this.restapi.player = !this.restapi.player;
-          // }else{//le da prioridad al red
-            
-          //   var posX = this.checkAdjacentThree(columnId,rowId).posX;            
-          //   var posY = this.checkAdjacentThree(columnId,rowId).posY;            
-          //   this.checkLocation(posX,posY+1);
-          //   this.columns[columnId].rows[rowId].color="red";
-          //   this.restapi.player = !this.restapi.player;
-          // }
 
 
         }

@@ -26,6 +26,7 @@ import { RegisterComponent } from './register/register.component';
 import { ViewScoreComponent } from './view-score/view-score.component';
 import { RecapComponent } from './recap/recap.component';
 import { HistorialComponent } from './historial/historial.component';
+import { LoadingComponent } from './loading/loading.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { HistorialComponent } from './historial/historial.component';
     RegisterComponent,
     ViewScoreComponent,
     RecapComponent,
-    HistorialComponent
+    HistorialComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
