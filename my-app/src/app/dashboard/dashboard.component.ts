@@ -124,7 +124,6 @@ export class DashboardComponent implements OnInit {
           this.restapi.message = "Timeout";
           this.openDialog();
           this.pauseTimer();
-          this.restapi.updateIsActive(this.restapi.actualId,false);
       }
     },1000)
   }

@@ -19,8 +19,8 @@ export class RestapiService {
   message = "Welcome to Connect 4 Game";
   users = [];
   TOKEN_KEY = 'token'
-  path = "http://localhost:8082/";
-  // path = "http://167.172.143.106:8082/";
+  // path = "http://localhost:8082/";
+  path = "http://167.172.143.106:8082/";
   
   authPath = this.path + '/login';
 
@@ -336,29 +336,6 @@ export class RestapiService {
       "date": moment().format("YYYY MM DD"),
       "columns": columns
     },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
-
-  }
-
-  updateIsActive(id,isActive){
-
-    // return this.http.post("http://localhost:8082/updateisactive",
-    return this.http.post(this.path+"updateisactive",
-    {
-      "id": id,
-      "date": moment().format("YYYY MM DD"),
-      "isActive": isActive
-    },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
-    .subscribe(
-        (val) => {
-            console.log("POST call successful value returned in body",val);
-         },
-        response => {
-          console.log("POST call in error", response.token);
-        },
-        () => {
-          console.log("The POST observable is now completed.");
-    });
-
 
   }
 

@@ -18,8 +18,6 @@ app.get('/logout', userController.getLogout);
 
 app.get('/columns', columnController.getColumn);
 
-app.post('/updateisactive', columnController.updateIsActive);
-
 app.post('/updatecolumns', columnController.updateColumns);
 
 app.post('/customcolumns', columnController.getColumnCustom);
