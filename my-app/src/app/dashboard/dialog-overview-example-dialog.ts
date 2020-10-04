@@ -66,6 +66,8 @@ export class DialogOverviewExampleDialog {
 
         this.restapi.setMaster(this.restapi.columns, this.actualId);
 
+        this.restapi.actualId = this.actualId;
+
         this.restapi.isStartedComp = true;
 
         for(var x=0;x<(<any>this.restapi.columns).length;x++){

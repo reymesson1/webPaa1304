@@ -26,10 +26,14 @@ export class HistorialComponent implements OnInit {
     
   }
 
-  loadHistory(id){
+  loadHistory(id, isActive){
 
     this.restapi.actualId = id;
-    this.restapi.historyActive = true;
+
+    if(isActive){
+
+      this.restapi.historyActive = true;
+    }
 
 
     console.log(id);

@@ -341,15 +341,24 @@ export class RestapiService {
 
   updateIsActive(id,isActive){
 
-    console.log('test')
-
-    return this.http.post("http://localhost:8082/updateisactive",
-    // return this.http.post(this.path+"updateisactive",
+    // return this.http.post("http://localhost:8082/updateisactive",
+    return this.http.post(this.path+"updateisactive",
     {
       "id": id,
       "date": moment().format("YYYY MM DD"),
       "isActive": isActive
     },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+    .subscribe(
+        (val) => {
+            console.log("POST call successful value returned in body",val);
+         },
+        response => {
+          console.log("POST call in error", response.token);
+        },
+        () => {
+          console.log("The POST observable is now completed.");
+    });
+
 
   }
 
