@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,6 +18,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { DialogOverviewExampleDialog } from './dashboard/dialog-overview-example-dialog';
 import { UserComponent } from './user/user.component';
@@ -56,11 +56,12 @@ import { LoadingComponent } from './loading/loading.component';
     MatInputModule,
     MatTabsModule,
     FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [MatToolbarModule, MatIconModule, MatTooltipModule, MatDialogModule, MatTabsModule, FormsModule],
+  exports: [MatToolbarModule, MatIconModule, MatTooltipModule, MatDialogModule, MatTabsModule, FormsModule, MatProgressSpinnerModule],
 
 })
 export class AppModule { }

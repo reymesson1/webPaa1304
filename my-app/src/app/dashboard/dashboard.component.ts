@@ -27,6 +27,7 @@ export class DashboardComponent implements OnInit {
   time: number = 0;
   play : boolean = false;
   dialogRef
+  dialogRefLoading
 
 
 
@@ -373,20 +374,18 @@ export class DashboardComponent implements OnInit {
 
     
     // width: '150px',height: '110px',
-    const dialogRef = this.dialog.open(LoadingComponent, {
-      width: '150px',height: '110px',
+    this.dialogRefLoading = this.dialog.open(LoadingComponent, {
+      width: '150px',height: '150px',
       data: {name: this.name, animal: this.animal,'test':'test'}
     });
 
-    dialogRef.disableClose = true;
+    this.dialogRefLoading.disableClose = true;
 
 
   }
 
 
   onClick(columnId,rowId){
-
-    this.openDialogLoading();
 
     if(!this.restapi.isStarted){
       
@@ -402,11 +401,20 @@ export class DashboardComponent implements OnInit {
         if(this.restapi.player){
 
             setTimeout(() => {
+              this.openDialogLoading();
+            }, 1000);
+
+            setTimeout(() => {
               
               this.checkLocation(movement,rowId);
               this.columns[movement].rows[rowId].color="red";
               this.restapi.player = !this.restapi.player;
             }, 5000);
+
+            setTimeout(() => {
+              this.dialogRefLoading.close();
+            }, 8000);
+
           }else{
             
               this.checkLocation(columnId,rowId);
