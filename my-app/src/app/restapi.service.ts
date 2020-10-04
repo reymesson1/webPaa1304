@@ -9,7 +9,8 @@ import * as moment from 'moment';
 })
 export class RestapiService {
 
-  username : string = ""
+  closeRegister : boolean = false;
+  username : string = "";
   status : string = "loss"
   historyActive : boolean = false;
   actualId : number = 0;

@@ -18,6 +18,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { DialogOverviewExampleDialog } from './dashboard/dialog-overview-example-dialog';
 import { UserComponent } from './user/user.component';
@@ -52,7 +53,8 @@ import { HistorialComponent } from './historial/historial.component';
     MatDialogModule,
     MatInputModule,
     MatTabsModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],
