@@ -28,7 +28,7 @@
                         </mat-form-field>
                 </div>
                 <div class="row">
-                    <button type="submit" mat-raised-button>Enter</button>
+                    <button [disabled]="btn_enable" type="submit" mat-raised-button>Enter</button>
                 </div>
                 <div class="row" *ngIf="animal">
                     You chose: <i>{{animal}}</i>

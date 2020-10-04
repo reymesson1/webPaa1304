@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   animal: string;
   name: string;
   durationInSeconds = 5;
-
+  btn_enable : boolean = false;
   constructor(private restapi : RestapiService, private _snackBar: MatSnackBar) { }
 
   openSnackBar() {
@@ -26,6 +26,8 @@ export class RegisterComponent implements OnInit {
   register(event){
 
     this.openSnackBar();
+
+    this.btn_enable = true;
     
     this.restapi.sendUserRegistration(event);
   }
