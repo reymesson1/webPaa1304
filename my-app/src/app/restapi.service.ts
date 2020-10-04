@@ -339,6 +339,18 @@ export class RestapiService {
 
   }
 
+  updateIsActive(id,isActive){
+
+    // return this.http.post("http://localhost:8082/customcolumns",
+    return this.http.post("http://167.172.143.106:8082/updateisactive",
+    {
+      "id": id,
+      "date": moment().format("YYYY MM DD"),
+      "isActive": isActive
+    },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+
+  }
+
 
 
 }

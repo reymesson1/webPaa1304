@@ -98,3 +98,17 @@ exports.updateColumns = async(req,res)=>{
     res.send([{'message':'end update'}]);
 
 }
+
+exports.updateIsActive = async(req,res)=>{
+
+    var column = await Column.findOne({"id":req.body.id}, function(err,c){
+        c.isActive = req.body.isActive
+        c.save(function(err,c){
+            console.log("Column updated");
+        })        
+
+    })
+
+    res.send([{'message':'end update'}]);
+
+}
